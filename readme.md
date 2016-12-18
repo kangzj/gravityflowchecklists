@@ -3,7 +3,7 @@ Gravity Flow Checklists Extension
 
 Gravity Flow is a commercial plugin for WordPress which provides a Workflow platform for forms created in Gravity Forms.
 
-Gravity Flow Checklists Extension is a commercial plugin for WordPress which allows Gravity Flow administrators to create workflow steps that create or update entries for a different form.
+Gravity Flow Checklists Extension is a commercial plugin for WordPress which allows Gravity Flow administrators to create checklists of forms that need to be submitted.
 
 This repository is a development version of the Gravity Flow Checklists Extension and is intended to facilitate communication with developers. It is not stable and not intended for installation on production sites.
 
