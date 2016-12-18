@@ -1,0 +1,72 @@
+#gravityflowchecklists-no-custom-fields {
+    cursor:pointer;
+}
+
+.gravityflowchecklists-add,
+.gravityflowchecklists-remove,
+.gravityflowchecklists-custom-field-handle {
+    cursor:pointer;
+    vertical-align:middle;
+    padding:3px;
+}
+.gravityflowchecklists-custom-field-row input{
+    padding:5px;
+}
+
+.gravityflow-handle,
+.gravityflow-item-container,
+.gravityflow-buttons-container{
+    float: left;
+}
+
+.gravityflow-handle{
+    width: 25px;
+    cursor:move;
+}
+.gravityflow-buttons-container{
+    margin-left: 5px;
+}
+.gravityflow-checklist-settings-container{
+    width: 350px;
+    border: 1px solid #dedede;
+}
+.gravityflow-checklist-settings{
+    padding: 10px;
+}
+.gravityflow-setting{
+    margin-bottom: 10px;
+}
+.gravityflow-radio-horizontal{
+    display:inline-block;
+    margin-right: 5px;
+}
+
+.gravityflow-toggle-icon {
+    display: inline-block;
+    width: 15px;
+}
+
+.gravityflow-settings-header{
+    cursor:pointer;
+    padding:10px;
+    font-weight:bold;
+}
+.gravityflow-repeater-item.top {
+    margin-bottom: 10px;
+}
+
+.gravityflow-repeater-item.top .gravityflow-handle,
+.gravityflow-repeater-item.top .gravityflow-buttons-container{
+    margin-top: 10px;
+}
+.gravityflow-repeater-item.nodes .gravityflow-handle,
+.gravityflow-repeater-item.nodes .gravityflow-buttons-container{
+    margin-top: 4px;
+}
+.gravityflow-setting select[multiple]{
+    width:100%;
+    height:120px;
+}
+.gravityflow-setting-form_id{
+    max-width:270px;
+}

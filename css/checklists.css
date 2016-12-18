@@ -1,0 +1,37 @@
+.gravityflowchecklists-checklist-container{
+    text-align:center;
+    width: 120px;
+}
+.gravityflowchecklists-checklist-wrapper li{
+    display: inline-block;
+    padding:10px;
+    vertical-align: top;
+}
+.gravityflowchecklists-checklist-wrapper ul{
+    text-align:left;
+    margin-left: 0;
+}
+
+.gravityflowchecklists-checklist-wrapper a{
+    text-decoration: none;
+}
+
+.gravityflowchecklists-disabled{
+    color:darkgrey;
+}
+.gravityflowchecklists-checklist-detail-wrapper li {
+    font-size:20px;
+    padding:5px;
+}
+
+.gravityflowchecklists-checklist-detail-wrapper ul li {
+    list-style: disc outside none;
+    margin-left:20px;
+}
+
+.gravityflowchecklists-checklist-detail-wrapper ol li {
+    list-style: decimal outside none;
+}
+img.handle{
+    cursor:hand;
+}
