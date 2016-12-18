@@ -1,0 +1,128 @@
+# Copyright 2015-2016 Steven Henty.
+msgid ""
+msgstr ""
+"Project-Id-Version: Gravity Flow Checklists 1.0-beta-1\n"
+"Report-Msgid-Bugs-To: https://www.gravityflow.io\n"
+"POT-Creation-Date: 2016-12-18 21:46:41+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Steven Henty <support@gravityflow.io>\n"
+"Language-Team: Steven Henty <support@gravityflow.io>\n"
+"X-Generator: Gravity Flow Build Script\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
+"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"Project-Id-Version: gravityflowchecklists\n"
+"Language: en_US\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-Country: United States\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Textdomain-Support: yes\n"
+
+#: class-checklists.php:99
+msgid "Select a form"
+msgstr ""
+
+#: class-checklists.php:121
+msgid "Name"
+msgstr ""
+
+#: class-checklists.php:122
+msgid "Custom Label"
+msgstr ""
+
+#: class-checklists.php:123
+msgid "Forms"
+msgstr ""
+
+#: class-checklists.php:124
+msgid "Personal"
+msgstr ""
+
+#: class-checklists.php:125
+msgid "Shared"
+msgstr ""
+
+#: class-checklists.php:126
+msgid "Sequential"
+msgstr ""
+
+#: class-checklists.php:127
+msgid "You don't have any checklists."
+msgstr ""
+
+#: class-checklists.php:128
+msgid "Let's add one"
+msgstr ""
+
+#: class-checklists.php:129
+msgid "This item will be deleted. Are you sure?"
+msgstr ""
+
+#: class-checklists.php:130
+msgid "New Checklist"
+msgstr ""
+
+#: class-checklists.php:131
+msgid "All Users"
+msgstr ""
+
+#: class-checklists.php:132
+msgid "Select Users"
+msgstr ""
+
+#: class-checklists.php:203
+msgid "Configuration"
+msgstr ""
+
+#: class-checklists.php:207 class-checklists.php:239 class-checklists.php:261
+#: class-checklists.php:263 class-checklists.php:295 class-checklists.php:393
+#: includes/class-checklists-detail.php:34
+msgid "Checklists"
+msgstr ""
+
+#: class-checklists.php:561 includes/class-checklists-detail.php:30
+#: includes/class-checklists-list.php:17
+msgid "Users"
+msgstr ""
+
+#: class-checklists.php:565
+msgid "Roles"
+msgstr ""
+
+#: includes/class-checklist-personal.php:139
+msgid "%s (pending)"
+msgstr ""
+
+#: includes/class-checklists-detail.php:19
+msgid "You don't have permission to view this checklist"
+msgstr ""
+
+#: includes/class-checklists-page.php:36
+msgid "Checklist not found."
+msgstr ""
+
+#: includes/class-checklists-page.php:44
+msgid "You don't have any checklists configured."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Gravity Flow Checklists"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://gravityflow.io"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Checklists Extension for Gravity Flow."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Steve Henty"
+msgstr ""
