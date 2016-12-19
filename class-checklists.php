@@ -57,22 +57,6 @@ if ( class_exists( 'GFForms' ) ) {
 		private function __clone() {
 		} /* do nothing */
 
-		public function init() {
-			parent::init();
-			add_filter( 'gravityflow_permission_granted_entry_detail', array(
-				$this,
-				'filter_gravityflow_permission_granted_entry_detail'
-			), 10, 4 );
-			if ( GFAPI::current_user_can_any( 'gravityflow_workflow_detail_admin_actions' ) ) {
-				add_filter( 'gravityflow_status_args', array( $this, 'filter_gravityflow_status_args' ) );
-				add_filter( 'gravityflow_bulk_action_status_table', array(
-					$this,
-					'filter_gravityflow_bulk_action_status_table'
-				), 10, 4 );
-				add_filter( 'gravityflow_admin_actions_workflow_detail', array( $this, 'filter_gravityflow_admin_actions_workflow_detail' ), 10, 5 );
-				add_filter( 'gravityflow_admin_action_feedback', array( $this, 'filter_gravityflow_admin_action_feedback' ), 10, 4 );
-			}
-		}
 
 		public function init_frontend() {
 			parent::init_frontend();
@@ -512,32 +496,6 @@ if ( class_exists( 'GFForms' ) ) {
 			$html = ob_get_clean();
 
 			return $html;
-		}
-
-		public function filter_gravityflow_permission_granted_entry_detail( $permission_granted, $entry, $form, $current_step ) {
-			if ( ! $permission_granted ) {
-				if ( isset( $_GET['checklist'] ) ) {
-					$checklist_id = sanitize_text_field( $_GET['checklist'] );
-					if ( ! empty( $entry[ 'workflow_checklist_' . $checklist_id ] ) ) {
-						$checklist = $this->get_checklist( $checklist_id );
-						if ( $checklist->user_has_permission() ) {
-							$permission_granted = true;
-						}
-					}
-				} else {
-					$checklists = $this->get_checklists();
-					foreach ( $checklists as $checklist ) {
-						if ( ! empty( $entry[ 'workflow_checklist_' . $checklist->get_id() ] ) ) {
-							if ( $checklist->user_has_permission() ) {
-								$permission_granted = true;
-								break;
-							}
-						}
-					}
-				}
-			}
-
-			return $permission_granted;
 		}
 
 		public function get_users_as_choices() {
