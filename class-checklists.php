@@ -489,6 +489,10 @@ if ( class_exists( 'GFForms' ) ) {
 				'detail_base_url'   => add_query_arg( array( 'page' => 'gravityflow-inbox', 'view' => 'entry' ) ),
 				'check_permissions' => $check_permissions,
 				'timeline'          => $a['timeline'],
+				'sidebar'           => $a['sidebar'],
+				'last_updated'         => $a['last_updated'],
+				'step_status'          => $a['step_status'],
+				'workflow_info'        => $a['workflow_info'],
 			);
 
 			ob_start();
