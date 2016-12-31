@@ -39,7 +39,7 @@ class Gravity_Flow_Checklists_List {
 
 						<div class="gravityflowchecklists-checklist-container">
 							<div>
-								<?php $checklist->icon(); ?>
+								<?php $checklist->icon( 5 ); ?>
 							</div>
 							<div>
 								<?php

@@ -25,13 +25,18 @@
 }
 
 .gravityflowchecklists-checklist-detail-wrapper ul li {
-    list-style: disc outside none;
-    margin-left:20px;
+    list-style-type: none;
+}
+.gravityflowchecklists-icon-complete,
+.gravityflowchecklists-icon-incomplete{
+    color:darkgreen;
 }
 
-.gravityflowchecklists-checklist-detail-wrapper ol li {
-    list-style: decimal outside none;
+.gravityflowchecklists-checklist-detail-wrapper ul li a {
+    text-decoration: none;
+    cursor:pointer;
 }
+
 img.handle{
     cursor:hand;
 }

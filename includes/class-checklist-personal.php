@@ -35,14 +35,6 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 		}
 	}
 
-	public function icon( $echo = true ) {
-		$icon = '<i class="fa fa-check-square-o fa-5x"></i>';
-		if ( $echo ) {
-			echo $icon;
-		}
-		return $icon;
-	}
-
 	public function get_entries() {
 
 		if ( isset( $this->entries ) ) {
@@ -134,11 +126,11 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 				if ( $can_submit ) {
 					$url  = add_query_arg( array( 'id' => $form_id ) );
 
-					$form_title = sprintf( '<a href="%s" style="text-decoration:none;">%s</a>',  esc_url( $url ), esc_html( $form['title'] ) );
+					$form_title = sprintf( '<i class="gravityflowchecklists-icon-incomplete fa fa-square-o"></i> <a href="%s">%s</a>',  esc_url( $url ), esc_html( $form['title'] ) );
 
-					$item = sprintf( esc_html__( '%s (pending)', 'gravityflowchecklists' ), $form_title );
+					$item = $form_title;
 				} else {
-					$item = sprintf( '<span class="gravityflowchecklists-disabled">%s</span>', esc_html( $form['title'] ) );
+					$item = sprintf( '<i class="gravityflowchecklists-icon-incomplete fa fa-square-o"></i> <span class="gravityflowchecklists-disabled">%s</span>', esc_html( $form['title'] ) );
 				}
 			} else {
 				$url  = add_query_arg( array(
@@ -146,7 +138,7 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 					'page' => 'gravityflow-inbox',
 					'view' => 'entry',
 				) );
-				$item = sprintf( '<a href="%s" style="text-decoration:none;">%s <i class="fa fa-check" style="color:darkgreen;"></i></a>', esc_url_raw( $url ), esc_html( $form['title'] ) );
+				$item = sprintf( '<i class="gravityflowchecklists-icon-complete fa fa-check-square-o"></i> <a href="%s">%s</a>', esc_url_raw( $url ), esc_html( $form['title'] ) );
 			}
 			$items[] = sprintf( '<li>%s</li>', $item );
 
@@ -155,8 +147,22 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 			}
 		}
 
-		$list = $this->sequential ? '<ol>%s</ol>' : '<ul>%s</ul>';
+		$list = '<ul>%s</ul>';
 
 		printf( $list, join( "\n", $items ) );
+	}
+
+	public function is_complete() {
+		$is_complete = true;
+		foreach ( $this->nodes as $node ) {
+			$form_id = $node['form_id'];
+			$entries = $this->get_entries_for_form( $form_id );
+			if ( empty( $entries ) ) {
+				$is_complete = false;
+				break;
+			}
+		}
+
+		return $is_complete;
 	}
 }

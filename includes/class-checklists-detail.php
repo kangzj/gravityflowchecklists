@@ -34,7 +34,7 @@ class Gravity_Flow_Checklists_Detail {
 				$checklists_name = esc_html__( 'Checklists', 'gravityflowchecklists' );
 			}
 			?>
-			<i class="fa fa-check-square-o"></i> <a href="<?php echo esc_url( $list_url ); ?>"><?php echo $checklists_name; ?></a> <i class="fa fa-long-arrow-right" style="color:silver"></i> <i class="fa fa-check-square-o"></i>
+			<i class="fa fa-check-square-o"></i> <a href="<?php echo esc_url( $list_url ); ?>"><?php echo $checklists_name; ?></a> <i class="fa fa-long-arrow-right" style="color:silver"></i> <?php $checklist->icon(); ?>
 
 			<?php
 			echo $checklist->get_name();

@@ -42,8 +42,25 @@ abstract class Gravity_Flow_Checklist {
 		$this->config = $config;
 	}
 
-	public function icon( $echo = true ) {
-		$icon = '<i class="fa fa-checklist-o fa-3x"></i>';
+	public function icon( $size = 1, $echo = true ) {
+		$is_complete = $this->is_complete();
+		$icon = $is_complete ? $this->complete_icon( $size, false ) :  $this->incomplete_icon( $size, false );
+		if ( $echo ) {
+			echo $icon;
+		}
+		return $icon;
+	}
+
+	public function complete_icon( $size = 1, $echo = true ) {
+		$icon = sprintf( '<i class="gravityflowchecklists-icon-complete fa fa-check-square-o fa-%dx"></i>', $size );
+		if ( $echo ) {
+			echo $icon;
+		}
+		return $icon;
+	}
+
+	public function incomplete_icon( $size = 1, $echo = true ) {
+		$icon = sprintf( '<i class="gravityflowchecklists-icon-complete fa fa-square-o fa-%dx"></i>', $size );
 		if ( $echo ) {
 			echo $icon;
 		}
@@ -105,6 +122,10 @@ abstract class Gravity_Flow_Checklist {
 			}
 		}
 
+		return false;
+	}
+
+	public function is_complete() {
 		return false;
 	}
 }

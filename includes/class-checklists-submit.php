@@ -22,10 +22,10 @@ class Gravity_Flow_Checklists_Submit {
 		if ( $args['breadcrumbs'] ) {
 			?>
 			<h2>
-				<i class="fa fa-checklist-open-o"></i>
+				<i class="fa fa-check-square-o"></i>
 				<a href="<?php echo esc_url( $list_url ); ?>">Checklists</a>
 				<i class="fa fa-long-arrow-right" style="color:silver"></i>
-				<i class="fa fa-checklist-open-o"></i>
+				<?php $checklist->icon(); ?>
 				<a href="<?php echo esc_url( $checklist_url ); ?>"><?php echo $checklist->get_name(); ?></a>
 
 			</h2>
