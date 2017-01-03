@@ -21,8 +21,8 @@ Facebook: [Steven Henty](https://www.facebook.com/gravityflow.io)
 1. [Purchase and install Gravity Forms](https://gravityflow.io/gravityforms)
 1. [Purchase and install Gravity Flow](https://gravityflow.io)
 1. Wordpress 4.3+
-1. Gravity Forms 1.9.4+
-1. Gravity Flow 1.4.1+
+1. Gravity Forms 2.0+
+1. Gravity Flow 1.5+
 
 
 = Support =
