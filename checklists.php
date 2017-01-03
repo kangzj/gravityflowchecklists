@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 define( 'GRAVITY_FLOW_CHECKLISTS_VERSION', '1.0-beta-1' );
-define( 'GRAVITY_FLOW_CHECKLISTS_EDD_ITEM_NAME', 'Checklists Beta' );
+define( 'GRAVITY_FLOW_CHECKLISTS_EDD_ITEM_NAME', 'Checklists' );
 
 add_action( 'gravityflow_loaded', array( 'Gravity_Flow_Checklists_Bootstrap', 'load' ), 1 );
 
