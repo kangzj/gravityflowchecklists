@@ -1,0 +1,2 @@
+- Added settings to each form in the checklist configuration to allow the
+- Fixed an issue with the link to the checklist list page from the breadcrumbs where the id parameter is not removed.
