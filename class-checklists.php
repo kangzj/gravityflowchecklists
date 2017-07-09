@@ -224,9 +224,16 @@ if ( class_exists( 'GFForms' ) ) {
 
 		public function app_settings_fields() {
 			$settings   = parent::app_settings_fields();
+
 			$settings[] = array(
 				'title'  => esc_html__( 'Configuration', 'gravityflowchecklists' ),
 				'fields' => array(
+					array(
+						'name'  => 'user_admin_checklists_link',
+						'tooltip' => esc_html__( 'Select the page to open when clicking on the Checklists link in the User admin list. If you select a WordPress page, it must contain the Gravity Flow Checklists shortcode.', 'gravityflow' ),
+						'label' => esc_html__( 'User Admin Link', 'gravityflow' ),
+						'type'  => 'wp_dropdown_pages',
+					),
 					array(
 						'name'  => 'checklists',
 						'label' => esc_html__( 'Checklists', 'gravityflowchecklists' ),
@@ -236,6 +243,32 @@ if ( class_exists( 'GFForms' ) ) {
 			);
 
 			return $settings;
+		}
+
+		/**
+		 * Display or return the markup for the wp_dropdown_pages field type.
+		 *
+		 * @since 1.0-beta-2
+		 *
+		 * @param array     $field The field properties.
+		 * @param bool|true $echo  Should the setting markup be echoed.
+		 *
+		 * @return string
+		 */
+		public function settings_wp_dropdown_pages( $field, $echo = true ) {
+
+			$args = array(
+				'selected'         => $this->get_setting( $field['name'] ),
+				'echo'             => $echo,
+				'name'             => '_gaddon_setting_' . esc_attr( $field['name'] ),
+				'class'            => 'gaddon-setting gaddon-select',
+				'show_option_none' => esc_html__( 'Default - WordPress Admin: Workflow Checklists Page', 'gravityflow' ),
+			);
+
+			$html = wp_dropdown_pages( $args );
+
+			return $html;
+
 		}
 
 		public function get_checklist_configs() {
@@ -393,10 +426,20 @@ if ( class_exists( 'GFForms' ) ) {
 		 * @return array $actions
 		 */
 		public function filter_user_row_actions( $actions, $user_object ) {
+			$settings = $this->get_app_settings();
+			$page_id = rgar( $settings, 'user_admin_checklists_link' );
 
-			$user_object->ID;
-			$url                             = admin_url( 'admin.php?page=gravityflow-checklists&user_id=' . $user_object->ID );
-			$url                             = esc_url_raw( $url );
+			if ( empty( $page_id ) ) {
+				$url = admin_url( 'admin.php?page=gravityflow-checklists&user_id=' . $user_object->ID );
+			} else {
+				$args = array(
+					'user_id' => $user_object->ID,
+				);
+				$base_url = get_permalink( $page_id );
+				$url      = add_query_arg( $args, $base_url );
+			}
+
+			$url = esc_url_raw( $url );
 			$new_actions['workflow_checklists'] = "<a href='" . $url . "'>" . esc_html__( 'Checklists' ) . '</a>';
 
 			return array_merge( $new_actions, $actions );
@@ -499,7 +542,6 @@ if ( class_exists( 'GFForms' ) ) {
 		 * @return string
 		 */
 		public function get_shortcode_checklists_page_entry_detail( $a ) {
-
 
 			$check_permissions = true;
 
