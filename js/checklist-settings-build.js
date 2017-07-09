@@ -58,16 +58,79 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var FormNodes = function (_RepeaterItem) {
 	_inherits(FormNodes, _RepeaterItem);
 
-	function FormNodes() {
+	function FormNodes(props) {
 		_classCallCheck(this, FormNodes);
 
-		return _possibleConstructorReturn(this, (FormNodes.__proto__ || Object.getPrototypeOf(FormNodes)).apply(this, arguments));
+		var _this = _possibleConstructorReturn(this, (FormNodes.__proto__ || Object.getPrototypeOf(FormNodes)).call(this, props));
+
+		_this.state = { isOpen: false };
+		_this._toggle = _this._toggle.bind(_this);
+		return _this;
 	}
 
 	_createClass(FormNodes, [{
+		key: '_toggle',
+		value: function _toggle() {
+			this.setState({ isOpen: !this.state.isOpen });
+		}
+	}, {
 		key: 'render',
 		value: function render() {
-			return _react2.default.createElement(_select2.default, { settingName: 'form_id', value: this.props.item.form_id, choices: this.props.forms });
+			var strings = this.props.strings;
+
+			var selectedFormHasWorkflow = false,
+			    formTitle = strings.newChecklistItem,
+			    nodeHeader,
+			    options = '',
+			    sequentialOptions = '';
+
+			for (var i = 0; i < this.props.forms.length; i++) {
+				if (this.props.forms[i].value && this.props.forms[i].value == this.props.item.form_id) {
+					formTitle = this.props.forms[i].label;
+					if (this.props.forms[i].hasWorkflow) {
+						selectedFormHasWorkflow = true;
+					}
+					break;
+				}
+			}
+
+			nodeHeader = _react2.default.createElement(
+				'div',
+				{ className: 'gravityflow-node-header', onClick: this._toggle },
+				_react2.default.createElement(
+					'div',
+					{ className: 'gravityflow-node-toggle-icon' },
+					_react2.default.createElement('i', {
+						className: this.state.isOpen ? "fa fa-caret-down" : "fa fa-caret-right" })
+				),
+				formTitle
+			);
+
+			if (this.props.checklistIsSequential && selectedFormHasWorkflow) {
+				sequentialOptions = _react2.default.createElement(_checkbox2.default, { settingName: 'waitForWorkflowComplete',
+					checked: this.props.item.waitForWorkflowComplete,
+					label: strings.waitForWorkflowComplete });
+			}
+
+			if (this.state.isOpen) {
+				options = _react2.default.createElement(
+					'div',
+					null,
+					strings.form,
+					_react2.default.createElement(_select2.default, { settingName: 'form_id', value: this.props.item.form_id, choices: this.props.forms }),
+					_react2.default.createElement(_checkbox2.default, { settingName: 'linkToEntry',
+						checked: this.props.item.linkToEntry,
+						label: strings.linkToEntry }),
+					sequentialOptions
+				);
+			}
+
+			return _react2.default.createElement(
+				'div',
+				{ className: 'gravityflow-node-container' },
+				nodeHeader,
+				options
+			);
 		}
 	}]);
 
@@ -102,6 +165,7 @@ var ChecklistSettings = function (_RepeaterItem2) {
 			checklistSettings = _react2.default.createElement(
 				'div',
 				null,
+				_react2.default.createElement(_checkbox2.default, { settingName: 'sequential', checked: this.props.item.sequential, label: strings.sequential }),
 				_react2.default.createElement(
 					_repeater2.default,
 					{
@@ -115,13 +179,14 @@ var ChecklistSettings = function (_RepeaterItem2) {
 							return {
 								id: _shortid2.default.generate(),
 								form_id: '',
-								custom_label: ''
+								custom_label: '',
+								waitForWorkflowComplete: false,
+								linkToEntry: true
 							};
 						}
 					},
-					_react2.default.createElement(FormNodes, { strings: strings, forms: strings.vars.forms })
-				),
-				_react2.default.createElement(_checkbox2.default, { settingName: 'sequential', checked: this.props.item.sequential, label: strings.sequential })
+					_react2.default.createElement(FormNodes, { strings: strings, forms: strings.vars.forms, checklistIsSequential: this.props.item.sequential })
+				)
 			);
 
 			var permissionsRadioChoices = [{
@@ -194,7 +259,9 @@ jQuery(document).ready(function () {
 					nodes: [{
 						id: _shortid2.default.generate(),
 						form_id: '',
-						custom_label: ''
+						custom_label: '',
+						waitForWorkflowComplete: false,
+						linkToEntry: true
 					}]
 				};
 			},

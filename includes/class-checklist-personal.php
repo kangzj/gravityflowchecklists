@@ -70,12 +70,12 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 			return $this->entry_ids;
 		}
 
-		$lead_table = GFFormsModel::get_lead_table_name();
+		$entry_table = $this->get_entry_table_name();
 		$clauses = array();
 
 		foreach ( $this->nodes as $node ) {
 			$form_id = $node['form_id'];
-			$clause = $wpdb->prepare( "(SELECT group_concat(id ORDER BY id DESC SEPARATOR ',' ) from $lead_table WHERE form_id=%d AND created_by=%d AND status='active') as form_%d", $form_id, $this->user->ID, $form_id );
+			$clause = $wpdb->prepare( "(SELECT group_concat(id ORDER BY id DESC SEPARATOR ',' ) from $entry_table WHERE form_id=%d AND created_by=%d AND status='active') as form_%d", $form_id, $this->user->ID, $form_id );
 			$clauses[] = $clause;
 		}
 
@@ -122,9 +122,12 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 			$form      = GFAPI::get_form( $form_id );
 			$entries = $this->get_entries_for_form( $form_id );
 
+			$has_workflow      = false;
+			$workflow_complete = false;
+
 			if ( empty( $entries ) ) {
 				if ( $can_submit ) {
-					$url  = add_query_arg( array( 'id' => $form_id ) );
+					$url = add_query_arg( array( 'id' => $form_id ) );
 
 					$form_title = sprintf( '<i class="gravityflowchecklists-icon-incomplete fa fa-square-o"></i> <a href="%s">%s</a>',  esc_url( $url ), esc_html( $form['title'] ) );
 
@@ -133,19 +136,50 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 					$item = sprintf( '<i class="gravityflowchecklists-icon-incomplete fa fa-square-o"></i> <span class="gravityflowchecklists-disabled">%s</span>', esc_html( $form['title'] ) );
 				}
 			} else {
-				$url  = add_query_arg( array(
-					'lid'  => $entries[0]['id'],
+
+				$steps = gravity_flow()->get_steps( $form_id );
+
+				$has_workflow = ! empty( $steps );
+
+				$entry = $entries[0];
+
+				$workflow_complete = false;
+
+				if ( $has_workflow && isset( $entry['workflow_final_status'] ) && $entry['workflow_final_status'] != 'pending' ) {
+					$workflow_complete = true;
+				}
+
+				$icon = '<i class="gravityflowchecklists-icon-complete fa fa-check-square-o"></i>';
+
+				$url = add_query_arg( array(
+					'lid'  => $entry['id'],
 					'page' => 'gravityflow-inbox',
 					'view' => 'entry',
 				) );
-				$item = sprintf( '<i class="gravityflowchecklists-icon-complete fa fa-check-square-o"></i> <a href="%s">%s</a>', esc_url_raw( $url ), esc_html( $form['title'] ) );
-			}
+
+				$form_title = esc_html( $form['title'] );
+
+				if ( ! isset( $node['linkToEntry'] ) || ( isset( $node['linkToEntry'] ) && $node['linkToEntry'] ) ){
+					$form_title = sprintf( '<a href="%s">%s</a>', esc_url_raw( $url ), $form_title );
+				}
+
+				$item = $icon . ' ' . $form_title;
+
+
+
+				if ( $has_workflow && ! $workflow_complete ) {
+					$item .= ' ' . sprintf( '<span class="gravityflowchecklists-processing">%s</span>', esc_html__( '(Processing)', 'gravityflow' ) );
+				}
+			} // End if().
+
 			$items[] = sprintf( '<li>%s</li>', $item );
 
-			if ( $this->sequential && empty( $entries ) ) {
+			$wait_for_workflow_complete = (bool) rgar( $node, 'waitForWorkflowComplete' );
+
+			if ( $this->sequential && ( empty( $entries ) || ( $has_workflow && $wait_for_workflow_complete && ! $workflow_complete ) ) ) {
 				$can_submit = false;
 			}
-		}
+		} // End foreach().
 
 		$list = '<ul>%s</ul>';
 
@@ -154,6 +188,8 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 
 	public function is_complete() {
 		$is_complete = true;
+		$entries = array();
+		$node = array();
 		foreach ( $this->nodes as $node ) {
 			$form_id = $node['form_id'];
 			$entries = $this->get_entries_for_form( $form_id );
@@ -163,6 +199,17 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 			}
 		}
 
+		if ( rgar( $node, 'waitForWorkflowComplete' ) ) {
+			$last_entry = $entries[0];
+			if ( isset( $last_entry['workflow_final_status'] ) && $last_entry['workflow_final_status'] != 'pending' ) {
+				$is_complete = false;
+			}
+		}
+
 		return $is_complete;
+	}
+
+	public function get_entry_table_name() {
+		return gravity_flow_checklists()->get_entry_table_name();
 	}
 }

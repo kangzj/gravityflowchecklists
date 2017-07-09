@@ -16,7 +16,9 @@
     text-decoration: none;
 }
 
-.gravityflowchecklists-disabled{
+.gravityflowchecklists-disabled,
+.gravityflowchecklists-processing
+{
     color:darkgrey;
 }
 .gravityflowchecklists-checklist-detail-wrapper li {

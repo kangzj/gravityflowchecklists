@@ -27,7 +27,7 @@
     margin-left: 5px;
 }
 .gravityflow-checklist-settings-container{
-    width: 350px;
+    width: 400px;
     border: 1px solid #dedede;
 }
 .gravityflow-checklist-settings{
@@ -44,6 +44,15 @@
 .gravityflow-toggle-icon {
     display: inline-block;
     width: 15px;
+}
+
+.gravityflow-node-toggle-icon{
+    display: inline-block;
+    width: 10px;
+}
+
+.gravityflow-node-header{
+    cursor:pointer;
 }
 
 .gravityflow-settings-header{
@@ -68,5 +77,14 @@
     height:120px;
 }
 .gravityflow-setting-form_id{
-    max-width:270px;
+    max-width:300px;
+}
+.gravityflow-repeater-item{
+    margin-top:10px;
+}
+
+.gravityflow-node-container{
+    width:310px;
+    border: 1px solid #dedede;
+    padding: 5px;
 }

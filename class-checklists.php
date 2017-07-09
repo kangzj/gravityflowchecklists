@@ -74,6 +74,39 @@ if ( class_exists( 'GFForms' ) ) {
 			}
 		}
 
+		public function upgrade( $previous_version ) {
+			if ( version_compare( $previous_version,'1.0-beta-2', '<' ) ) {
+				$this->upgrade_10beta2();
+			}
+		}
+
+		public function upgrade_10beta2() {
+			$settings_dirty = false;
+			$app_settings = $this->get_app_settings();
+			$checklist_configs = $this->get_checklist_configs();
+			foreach ( $checklist_configs as &$checklist_config ) {
+				$nodes = rgar( $checklist_config, 'nodes' );
+				if ( ! empty( $nodes ) ) {
+					foreach ( $nodes as &$node ) {
+						if ( ! isset( $node['linkToEntry'] ) ) {
+							$node['linkToEntry'] = true;
+						}
+						$node['waitForWorkflowComplete'] = false;
+					}
+					$checklist_config['nodes'] = $nodes;
+					$settings_dirty = true;
+				}
+			}
+
+			if ( $settings_dirty ) {
+				if ( ! is_array( $app_settings ) ) {
+					$app_settings = array();
+				}
+				$app_settings['checklists'] = $checklist_configs;
+				$this->update_app_settings( $app_settings );
+			}
+		}
+
 		public function scripts() {
 			$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG || isset( $_GET['gform_debug'] ) ? '' : '.min';
 
@@ -82,14 +115,17 @@ if ( class_exists( 'GFForms' ) ) {
 
 				$form_choices = array( array( 'value' => '', 'label' => __( 'Select a form', 'gravityflowchecklists' ) ) );
 				foreach ( $forms as $form ) {
+					$steps = gravity_flow()->get_steps( $form->id );
+					$has_workflow = ! empty( $steps );
 					$form_choices[] = array(
 						'value' => $form->id,
 						'label' => $form->title,
+						'hasWorkflow' => $has_workflow,
 					);
 				}
 
 				$user_choices = $this->get_users_as_choices();
-				$scripts[]    = array(
+				$scripts[] = array(
 					'handle'  => 'gravityflowchecklists_settings_js',
 					'src'     => $this->get_base_url() . "/js/checklist-settings-build{$min}.js",
 					'version' => $this->_version,
@@ -98,22 +134,27 @@ if ( class_exists( 'GFForms' ) ) {
 						array( 'query' => 'page=gravityflow_settings&view=gravityflowchecklists' ),
 					),
 					'strings' => array(
-						'vars'              => array(
+						'vars'                    => array(
 							'forms'       => $form_choices,
 							'userChoices' => $user_choices,
 						),
-						'checklistName'        => __( 'Name', 'gravityflowchecklists' ),
-						'customLabel'       => __( 'Custom Label', 'gravityflowchecklists' ),
-						'forms'             => __( 'Forms', 'gravityflowchecklists' ),
-						'personal'         => __( 'Personal', 'gravityflowchecklists' ),
-						'shared'         => __( 'Shared', 'gravityflowchecklists' ),
-						'sequential'        => __( 'Sequential', 'gravityflowchecklists' ),
-						'noItems'           => __( "You don't have any checklists.", 'graviytflowchecklists' ),
-						'addOne'            => __( "Let's add one", 'graviytflowchecklists' ),
-						'areYouSure'        => __( 'This item will be deleted. Are you sure?', 'graviytflowchecklists' ),
-						'defaultChecklistName' => __( 'New Checklist', 'graviytflowchecklists' ),
-						'allUsers'          => __( 'All Users', 'gravityflowchecklists' ),
-						'selectUsers'       => __( 'Select Users', 'gravityflowchecklists' ),
+						'checklistName'           => __( 'Name', 'gravityflowchecklists' ),
+						'customLabel'             => __( 'Custom Label', 'gravityflowchecklists' ),
+						'forms'                   => __( 'Forms', 'gravityflowchecklists' ),
+						'form'                    => __( 'Form', 'gravityflowchecklists' ),
+						'personal'                => __( 'Personal', 'gravityflowchecklists' ),
+						'shared'                  => __( 'Shared', 'gravityflowchecklists' ),
+						'sequential'              => __( 'Sequential', 'gravityflowchecklists' ),
+						'options'                 => __( 'Options', 'gravityflowchecklists' ),
+						'waitForWorkflowComplete' => __( 'Block sequence until Workflow is complete', 'gravityflowchecklists' ),
+						'noItems'                 => __( "You don't have any checklists.", 'graviytflowchecklists' ),
+						'addOne'                  => __( "Let's add one", 'graviytflowchecklists' ),
+						'areYouSure'              => __( 'This item will be deleted. Are you sure?', 'graviytflowchecklists' ),
+						'defaultChecklistName'    => __( 'New Checklist', 'graviytflowchecklists' ),
+						'allUsers'                => __( 'All Users', 'gravityflowchecklists' ),
+						'selectUsers'             => __( 'Select Users', 'gravityflowchecklists' ),
+						'newChecklistItem'        => __( 'New Checklist Item', 'gravityflow' ),
+						'linkToEntry'             => __( 'Link to entry', 'gravityflow' ),
 					),
 				);
 			}
@@ -197,7 +238,7 @@ if ( class_exists( 'GFForms' ) ) {
 			return $settings;
 		}
 
-		public function get_checklist_settings() {
+		public function get_checklist_configs() {
 			$settings        = $this->get_app_settings();
 			$checklist_settings = isset( $settings['checklists'] ) ? $settings['checklists'] : array();
 
@@ -302,7 +343,7 @@ if ( class_exists( 'GFForms' ) ) {
 		public function get_checklists( WP_User $user = null ) {
 
 
-			$checklist_configs = $this->get_checklist_settings();
+			$checklist_configs = $this->get_checklist_configs();
 
 			$checklist_configs = apply_filters( 'gravityflowchecklists_checklists', $checklist_configs );
 
@@ -339,24 +380,6 @@ if ( class_exists( 'GFForms' ) ) {
 			}
 
 			return false;
-		}
-
-		public static function get_entry_count_per_form( $user_id, $form_ids ) {
-			global $wpdb;
-			$lead_table_name = GFFormsModel::get_lead_table_name();
-
-			$cache_key = 'checklists:entries_by_form_by_user_' . $user_id;
-
-			$entry_count = GFCache::get( $cache_key );
-			if ( empty( $entry_count ) ) {
-				//Getting entry count per form
-				$sql         = $wpdb->prepare( "SELECT form_id, count(id) as lead_count FROM $lead_table_name l WHERE status='active' AND created_by = %d GROUP BY form_id", $user_id );
-				$entry_count = $wpdb->get_results( $sql );
-
-				GFCache::set( $cache_key, $entry_count, true, 60 );
-			}
-
-			return $entry_count;
 		}
 
 		/**
@@ -539,6 +562,21 @@ if ( class_exists( 'GFForms' ) ) {
 		public function action_gravityflow_enqueue_frontend_scripts() {
 			$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG || isset( $_GET['gform_debug'] ) ? '' : '.min';
 			wp_enqueue_style( 'gravityflowchecklists_checklists', $this->get_base_url() . "/css/checklists{$min}.css", null, $this->_version );
+		}
+
+		public static function get_entry_table_name() {
+			return version_compare( self::get_gravityforms_db_version(), '2.3-dev-1', '<' ) ? GFFormsModel::get_lead_table_name() : GFFormsModel::get_entry_table_name();
+		}
+
+		public static function get_gravityforms_db_version() {
+
+			if ( method_exists( 'GFFormsModel', 'get_database_version' ) ) {
+				$db_version = GFFormsModel::get_database_version();
+			} else {
+				$db_version = GFForms::$version;
+			}
+
+			return $db_version;
 		}
 	}
 }

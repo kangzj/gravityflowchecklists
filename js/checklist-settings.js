@@ -12,8 +12,65 @@ import TextField from './components/repeater/text';
 import TextAreaField from './components/repeater/textarea';
 
 class FormNodes extends RepeaterItem {
+
+	constructor(props) {
+		super(props);
+		this.state = { isOpen : false };
+		this._toggle = this._toggle.bind(this);
+	}
+
+	_toggle(){
+		this.setState( { isOpen: ! this.state.isOpen });
+	}
+
 	render() {
-		return <SelectField settingName="form_id" value={this.props.item.form_id} choices={this.props.forms} />
+		const strings = this.props.strings;
+
+		var selectedFormHasWorkflow = false,
+			formTitle = strings.newChecklistItem,
+			nodeHeader,
+			options = '',
+			sequentialOptions = '';
+
+		for (var i=0; i < this.props.forms.length; i++) {
+			if (this.props.forms[i].value && this.props.forms[i].value == this.props.item.form_id) {
+				formTitle = this.props.forms[i].label;
+				if (this.props.forms[i].hasWorkflow) {
+					selectedFormHasWorkflow = true;
+				}
+				break;
+			}
+		}
+
+		nodeHeader = (<div className="gravityflow-node-header" onClick={this._toggle}>
+			<div className="gravityflow-node-toggle-icon"><i
+				className={ this.state.isOpen ? "fa fa-caret-down" : "fa fa-caret-right"}/></div>
+			{formTitle}
+		</div>);
+
+		if ( this.props.checklistIsSequential && selectedFormHasWorkflow ) {
+			sequentialOptions = (<CheckboxField settingName="waitForWorkflowComplete"
+												 checked={this.props.item.waitForWorkflowComplete}
+												 label={strings.waitForWorkflowComplete}/>)
+		}
+
+
+		if (this.state.isOpen) {
+			options = (
+				<div>
+					{strings.form}
+					<SelectField settingName="form_id" value={this.props.item.form_id} choices={this.props.forms} />
+					<CheckboxField settingName="linkToEntry"
+								   checked={this.props.item.linkToEntry}
+								   label={strings.linkToEntry}/>
+					{sequentialOptions}
+				</div>);
+		}
+
+		return (<div className="gravityflow-node-container">
+				{nodeHeader}
+				{options}
+			</div>)
 	}
 }
 
@@ -35,6 +92,7 @@ class ChecklistSettings extends RepeaterItem {
 		var checklistSettings;
 
 		checklistSettings = (<div>
+			<CheckboxField settingName="sequential" checked={this.props.item.sequential} label={strings.sequential}/>
 			<Repeater
 				label={strings.forms}
 				stateful={false}
@@ -43,17 +101,18 @@ class ChecklistSettings extends RepeaterItem {
 				strings={strings}
 				minItems={1}
 				defaultValues={function(){
-												return {
-														id: shortid.generate(),
-														form_id: '',
-														custom_label: ''
-														}
-													}
-												}
+									return {
+											id: shortid.generate(),
+											form_id: '',
+											custom_label: '',
+											waitForWorkflowComplete: false,
+											linkToEntry : true
+											}
+										}
+									}
 			>
-				<FormNodes strings={strings} forms={strings.vars.forms}/>
+				<FormNodes strings={strings} forms={strings.vars.forms} checklistIsSequential={this.props.item.sequential}/>
 			</Repeater>
-			<CheckboxField settingName="sequential" checked={this.props.item.sequential} label={strings.sequential}/>
 		</div>)
 
 		const permissionsRadioChoices = [
@@ -116,7 +175,9 @@ jQuery(document).ready(function () {
 							{
 								id: shortid.generate(),
 								form_id: '',
-								custom_label: ''
+								custom_label: '',
+								waitForWorkflowComplete: false,
+								linkToEntry : true
 							}
 						]
 			}	}}
