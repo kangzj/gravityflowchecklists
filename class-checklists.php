@@ -58,6 +58,12 @@ if ( class_exists( 'GFForms' ) ) {
 		} /* do nothing */
 
 
+		public function init() {
+			parent::init();
+
+			add_action( 'gravityflow_enqueue_frontend_scripts', array( $this, 'action_gravityflow_enqueue_frontend_scripts' ) );
+		}
+
 		public function init_frontend() {
 			parent::init_frontend();
 			add_filter( 'gravityflow_shortcode_checklists', array( $this, 'shortcode' ), 10, 2 );
@@ -170,6 +176,24 @@ if ( class_exists( 'GFForms' ) ) {
 					),
 				),
 				'strings' => array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ),
+			);
+
+			$scripts[] = array(
+				'handle'  => 'gravityflowchecklists_checklists',
+				'src'     => $this->get_base_url() . "/js/checklists{$min}.js",
+				'deps'    => array( 'jquery' ),
+				'version' => $this->_version,
+				'enqueue' => array(
+					array(
+						'query' => 'page=gravityflow-checklists&checklist=_notempty_',
+					),
+				),
+				'strings' => array(
+					'vars' => array(
+						'root'  => esc_url_raw( rest_url() ),
+						'nonce' => wp_create_nonce( 'wp_rest' ),
+					),
+				),
 			);
 
 			return array_merge( parent::scripts(), $scripts );
@@ -563,6 +587,15 @@ if ( class_exists( 'GFForms' ) ) {
 
 		public function action_gravityflow_enqueue_frontend_scripts() {
 			$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG || isset( $_GET['gform_debug'] ) ? '' : '.min';
+			wp_enqueue_script( 'gravityflowchecklists_checklists', $this->get_base_url() . "/js/checklists{$min}.js", array( 'jquery' ), $this->_version );
+			wp_localize_script( 'gravityflowchecklists_checklists', 'gravityflowchecklists_checklists_strings', array(
+					'vars' => array(
+						'root'  => esc_url_raw( rest_url() ),
+						'nonce' => wp_create_nonce( 'wp_rest' ),
+					),
+				)
+			);
+
 			wp_enqueue_style( 'gravityflowchecklists_checklists', $this->get_base_url() . "/css/checklists{$min}.css", null, $this->_version );
 		}
 
@@ -580,5 +613,6 @@ if ( class_exists( 'GFForms' ) ) {
 
 			return $db_version;
 		}
+
 	}
 }
