@@ -76,6 +76,10 @@ class Gravity_Flow_Checklists_REST_API {
 
 		$original_exemptions = $exemptions;
 
+		if ( empty( $exemptions ) ) {
+			$exemptions = array();
+		}
+
 		$method = $request->get_method();
 
 		if ( $method == 'DELETE' ) {
