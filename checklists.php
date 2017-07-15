@@ -35,6 +35,10 @@ class Gravity_Flow_Checklists_Bootstrap {
 	public static function load() {
 		require_once( 'includes/class-checklist.php' );
 		require_once( 'includes/class-checklist-personal.php' );
+		require_once( 'includes/class-rest-api.php' );
+
+		$rest_api = new Gravity_Flow_Checklists_REST_API();
+		$rest_api->init();
 
 		require_once( 'class-checklists.php' );
 

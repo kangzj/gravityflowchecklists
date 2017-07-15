@@ -125,17 +125,30 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 			$has_workflow      = false;
 			$workflow_complete = false;
 
+			$exempt = false;
+
 			if ( empty( $entries ) ) {
-				if ( $can_submit ) {
+
+				// No entries yet so the form may be ready to submit
+
+				$exempt = $this->is_exempt( $form_id );
+
+				$icon_classes = $exempt ? 'gravityflowchecklists-icon-complete fa-check-square-o' : 'gravityflowchecklists-icon-incomplete fa-square-o';
+
+				$icon = sprintf( '<i class="gravityflowchecklists-icon %s fa fa-fw" data-checklist="%s" data-user_id="%d" data-form_id="%d" data-exempt="%d"></i>', $icon_classes, $this->get_id(), $this->user->ID, $form_id, $exempt );
+
+				if ( $can_submit && ! $exempt ) {
 					$url = add_query_arg( array( 'id' => $form_id ) );
 
-					$form_title = sprintf( '<i class="gravityflowchecklists-icon-incomplete fa fa-square-o"></i> <a href="%s">%s</a>',  esc_url( $url ), esc_html( $form['title'] ) );
+					$form_title = $icon . ' ' . sprintf( '<a href="%s">%s</a>',  esc_url( $url ), esc_html( $form['title'] ) );
 
 					$item = $form_title;
 				} else {
-					$item = sprintf( '<i class="gravityflowchecklists-icon-incomplete fa fa-square-o"></i> <span class="gravityflowchecklists-disabled">%s</span>', esc_html( $form['title'] ) );
+					$item = $icon . ' ' . sprintf( '<span class="gravityflowchecklists-disabled">%s</span>', esc_html( $form['title'] ) );
 				}
 			} else {
+
+				// The form has been submitted already
 
 				$steps = gravity_flow()->get_steps( $form_id );
 
@@ -149,7 +162,7 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 					$workflow_complete = true;
 				}
 
-				$icon = '<i class="gravityflowchecklists-icon-complete fa fa-check-square-o"></i>';
+				$icon = '<i class="gravityflowchecklists-icon-complete fa fa-fw fa-check-square-o"></i>';
 
 				$url = add_query_arg( array(
 					'lid'  => $entry['id'],
@@ -176,7 +189,7 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 
 			$wait_for_workflow_complete = (bool) rgar( $node, 'waitForWorkflowComplete' );
 
-			if ( $this->sequential && ( empty( $entries ) || ( $has_workflow && $wait_for_workflow_complete && ! $workflow_complete ) ) ) {
+			if ( $this->sequential && ( empty( $entries ) || ( $has_workflow && $wait_for_workflow_complete && ! $workflow_complete ) ) && ! $exempt) {
 				$can_submit = false;
 			}
 		} // End foreach().
@@ -211,5 +224,10 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 
 	public function get_entry_table_name() {
 		return gravity_flow_checklists()->get_entry_table_name();
+	}
+
+	public function is_exempt( $form_id ) {
+		$exemptions = get_user_meta( $this->user->ID, 'gravityflowchecklists_exemptions', true );
+		return isset( $exemptions[ $form_id ] );
 	}
 }
