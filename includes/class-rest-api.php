@@ -72,6 +72,8 @@ class Gravity_Flow_Checklists_REST_API {
 			return new WP_Error( 'missing_form_id', __( 'Missing Form ID', 'gravityflowchecklists' ) );
 		}
 
+		wp_cache_flush();
+
 		$exemptions = get_user_meta( $user_id, 'gravityflowchecklists_exemptions', true );
 
 		$original_exemptions = $exemptions;
