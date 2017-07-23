@@ -1,9 +1,9 @@
 # Copyright 2015-2017 Steven Henty.
 msgid ""
 msgstr ""
-"Project-Id-Version: Gravity Flow Checklists 1.0-beta-1\n"
+"Project-Id-Version: Gravity Flow Checklists 1.0-beta-2-dev\n"
 "Report-Msgid-Bugs-To: https://www.gravityflow.io\n"
-"POT-Creation-Date: 2017-01-02 22:48:02+00:00\n"
+"POT-Creation-Date: 2017-07-23 19:55:27+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,75 +24,99 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Textdomain-Support: yes\n"
 
-#: class-checklists.php:83
+#: class-checklists.php:122
 msgid "Select a form"
 msgstr ""
 
-#: class-checklists.php:105
+#: class-checklists.php:147
 msgid "Name"
 msgstr ""
 
-#: class-checklists.php:106
+#: class-checklists.php:148
 msgid "Custom Label"
 msgstr ""
 
-#: class-checklists.php:107
+#: class-checklists.php:149
 msgid "Forms"
 msgstr ""
 
-#: class-checklists.php:108
+#: class-checklists.php:150
+msgid "Form"
+msgstr ""
+
+#: class-checklists.php:151
 msgid "Personal"
 msgstr ""
 
-#: class-checklists.php:109
+#: class-checklists.php:152
 msgid "Shared"
 msgstr ""
 
-#: class-checklists.php:110
+#: class-checklists.php:153
 msgid "Sequential"
 msgstr ""
 
-#: class-checklists.php:111
+#: class-checklists.php:154
+msgid "Options"
+msgstr ""
+
+#: class-checklists.php:155
+msgid "Block sequence until Workflow is complete"
+msgstr ""
+
+#: class-checklists.php:156
 msgid "You don't have any checklists."
 msgstr ""
 
-#: class-checklists.php:112
+#: class-checklists.php:157
 msgid "Let's add one"
 msgstr ""
 
-#: class-checklists.php:113
+#: class-checklists.php:158
 msgid "This item will be deleted. Are you sure?"
 msgstr ""
 
-#: class-checklists.php:114
+#: class-checklists.php:159
 msgid "New Checklist"
 msgstr ""
 
-#: class-checklists.php:115
+#: class-checklists.php:160
 msgid "All Users"
 msgstr ""
 
-#: class-checklists.php:116
+#: class-checklists.php:161
 msgid "Select Users"
 msgstr ""
 
-#: class-checklists.php:187
+#: class-checklists.php:162
+msgid "New Checklist Item"
+msgstr ""
+
+#: class-checklists.php:163
+msgid "Link to entry"
+msgstr ""
+
+#: class-checklists.php:252
 msgid "Configuration"
 msgstr ""
 
-#: class-checklists.php:191 class-checklists.php:223 class-checklists.php:245
-#: class-checklists.php:247 class-checklists.php:279 class-checklists.php:377
+#: class-checklists.php:256 class-checklists.php:288 class-checklists.php:310
+#: class-checklists.php:312 class-checklists.php:344 class-checklists.php:426
 #: includes/class-checklists-detail.php:34
 msgid "Checklists"
 msgstr ""
 
-#: class-checklists.php:523 includes/class-checklists-detail.php:30
+#: class-checklists.php:572 includes/class-checklists-detail.php:30
 #: includes/class-checklists-list.php:17
 msgid "Users"
 msgstr ""
 
-#: class-checklists.php:527
+#: class-checklists.php:576
 msgid "Roles"
+msgstr ""
+
+#: includes/class-checklist-personal.php:184
+msgid "(Processing)"
 msgstr ""
 
 #: includes/class-checklists-detail.php:19
@@ -105,6 +129,22 @@ msgstr ""
 
 #: includes/class-checklists-page.php:44
 msgid "You don't have any checklists configured."
+msgstr ""
+
+#: includes/class-rest-api.php:60
+msgid "Missing Checklist ID"
+msgstr ""
+
+#: includes/class-rest-api.php:66
+msgid "Missing User ID"
+msgstr ""
+
+#: includes/class-rest-api.php:72
+msgid "Missing Form ID"
+msgstr ""
+
+#: includes/class-rest-api.php:93
+msgid "Nothing to delete"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
