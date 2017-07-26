@@ -1,5 +1,5 @@
 - Added settings to each form in the checklist configuration to allow the checklist sequence to be blocked until the workflow is complete.
 - Added form exemptions. The admin can now mark forms as exempt by user.
 - Added settings to each form in the checklist configuration to control whether the form title is linked to the completed entry.
-- Added the gravtityflowchecklists_entry_url and gravtityflowchecklists_form_url filters.
+- Added the gravityflowchecklists_entry_url and gravityflowchecklists_form_url filters.
 - Fixed an issue with the link to the checklist list page from the breadcrumbs where the id parameter is not removed.

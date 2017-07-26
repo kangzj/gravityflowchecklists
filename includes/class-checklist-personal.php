@@ -150,7 +150,7 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 					 * @param array $entries The entries submitted by the current user for this form.
 					 * @param bool $exempt Whether the user is exempt from submitting this form.
 					 */
-					$url = apply_filters( 'gravtityflowchecklists_form_url', $url, $form, $entries, $exempt );
+					$url = apply_filters( 'gravityflowchecklists_form_url', $url, $form, $entries, $exempt );
 
 					$form_title = $icon . ' ' . sprintf( '<a href="%s">%s</a>',  esc_url( $url ), esc_html( $form['title'] ) );
 
@@ -192,7 +192,7 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 				 * @param array $entries All the entries submitted by the current user for this form.
 				 * @param bool $exempt Whether the user is exempt from submitting this form.
 				 */
-				$url = apply_filters( 'gravtityflowchecklists_entry_url', $url, $form, $entries, $exempt );
+				$url = apply_filters( 'gravityflowchecklists_entry_url', $url, $form, $entries, $exempt );
 
 				$form_title = esc_html( $form['title'] );
 
