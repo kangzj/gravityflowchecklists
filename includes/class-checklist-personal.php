@@ -140,6 +140,18 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 				if ( $can_submit && ! $exempt ) {
 					$url = add_query_arg( array( 'id' => $form_id ) );
 
+					/**
+					 * Allows the URL to the form to be modified.
+					 *
+					 * @since 1.0-beta-2
+					 *
+					 * @param string $url The URL of the form.
+					 * @param array $forms The Form array.
+					 * @param array $entries The entries submitted by the current user for this form.
+					 * @param bool $exempt Whether the user is exempt from submitting this form.
+					 */
+					$url = apply_filters( 'gravtityflowchecklists_form_url', $url, $form, $entries, $exempt );
+
 					$form_title = $icon . ' ' . sprintf( '<a href="%s">%s</a>',  esc_url( $url ), esc_html( $form['title'] ) );
 
 					$item = $form_title;
@@ -170,15 +182,25 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 					'view' => 'entry',
 				) );
 
+				/**
+				 * Allows the URL to the entry to be modified.
+				 *
+				 * @since 1.0-beta-2
+				 *
+				 * @param string $url The URL of the entry.
+				 * @param array $forms The Form array.
+				 * @param array $entries All the entries submitted by the current user for this form.
+				 * @param bool $exempt Whether the user is exempt from submitting this form.
+				 */
+				$url = apply_filters( 'gravtityflowchecklists_entry_url', $url, $form, $entries, $exempt );
+
 				$form_title = esc_html( $form['title'] );
 
 				if ( ! isset( $node['linkToEntry'] ) || ( isset( $node['linkToEntry'] ) && $node['linkToEntry'] ) ){
-					$form_title = sprintf( '<a href="%s">%s</a>', esc_url_raw( $url ), $form_title );
+					$form_title = sprintf( '<a href="%s">%s</a>', esc_url( $url ), $form_title );
 				}
 
 				$item = $icon . ' ' . $form_title;
-
-
 
 				if ( $has_workflow && ! $workflow_complete ) {
 					$item .= ' ' . sprintf( '<span class="gravityflowchecklists-processing">%s</span>', esc_html__( '(Processing)', 'gravityflow' ) );
