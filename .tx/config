@@ -1,7 +1,7 @@
 [main]
 host = https://www.transifex.com
 
-[gravityflowchecklists.gravityflowchecklistspot]
+[gravityflowchecklists.gravityflowchecklists]
 file_filter = languages/gravityflowfolders-<lang>.po
 source_file = languages/gravityflowfolders.pot
 source_lang = en_US
