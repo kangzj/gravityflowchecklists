@@ -1,164 +1,163 @@
 # Copyright 2015-2017 Steven Henty.
+# Translators:
+# Süha Karalar <suhakaralar@gmail.com>, 2017
 msgid ""
 msgstr ""
-"Project-Id-Version: Gravity Flow Checklists 1.0-beta-2\n"
+"Project-Id-Version: gravityflowchecklists\n"
 "Report-Msgid-Bugs-To: https://www.gravityflow.io\n"
-"POT-Creation-Date: 2017-09-02 09:45:42+00:00\n"
+"POT-Creation-Date: 2017-07-23 19:55:27+00:00\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Süha Karalar <suhakaralar@gmail.com>, 2017\n"
+"Language-Team: Turkish (Turkey) (https://www.transifex.com/gravityflow/teams/50678/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Steven Henty <support@gravityflow.io>\n"
-"Language-Team: Steven Henty <support@gravityflow.io>\n"
+"Language: tr_TR\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Gravity Flow Build Script\n"
-"X-Poedit-KeywordsList: "
-"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
-"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
-"Project-Id-Version: gravityflowchecklists\n"
-"Language: en_US\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Basepath: ../\n"
 "X-Poedit-Bookmarks: \n"
 "X-Poedit-Country: United States\n"
+"X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Textdomain-Support: yes\n"
 
 #: class-checklists.php:122
 msgid "Select a form"
-msgstr ""
+msgstr "Form seçin"
 
 #: class-checklists.php:147
 msgid "Name"
-msgstr ""
+msgstr "İsim:"
 
 #: class-checklists.php:148
 msgid "Custom Label"
-msgstr ""
+msgstr "Özel Etiket"
 
 #: class-checklists.php:149
 msgid "Forms"
-msgstr ""
+msgstr "Formlar"
 
 #: class-checklists.php:150
 msgid "Form"
-msgstr ""
+msgstr "Form"
 
 #: class-checklists.php:151
 msgid "Personal"
-msgstr ""
+msgstr "Kişisel"
 
 #: class-checklists.php:152
 msgid "Shared"
-msgstr ""
+msgstr "Paylaşımlı"
 
 #: class-checklists.php:153
 msgid "Sequential"
-msgstr ""
+msgstr "Sıralı"
 
 #: class-checklists.php:154
 msgid "Options"
-msgstr ""
+msgstr "Seçenekler"
 
 #: class-checklists.php:155
 msgid "Block sequence until Workflow is complete"
-msgstr ""
+msgstr "İş akışı tamamlanana kadar bu bölümü engelle"
 
 #: class-checklists.php:156
 msgid "You don't have any checklists."
-msgstr ""
+msgstr "Henüz denetim listeniz yok."
 
 #: class-checklists.php:157
 msgid "Let's add one"
-msgstr ""
+msgstr "Bir tane ekleyelim"
 
 #: class-checklists.php:158
 msgid "This item will be deleted. Are you sure?"
-msgstr ""
+msgstr "Bu nesne silinecektir. Emin misiniz?"
 
 #: class-checklists.php:159
 msgid "New Checklist"
-msgstr ""
+msgstr "Yeni Denetim Listesi"
 
 #: class-checklists.php:160
 msgid "All Users"
-msgstr ""
+msgstr "Tüm Kullanıcılar"
 
 #: class-checklists.php:161
 msgid "Select Users"
-msgstr ""
+msgstr "Kullanıcı Seç"
 
 #: class-checklists.php:162
 msgid "New Checklist Item"
-msgstr ""
+msgstr "Yeni Kontrol Listesi"
 
 #: class-checklists.php:163
 msgid "Link to entry"
-msgstr ""
+msgstr "Kayıt Bağlantısı"
 
 #: class-checklists.php:252
 msgid "Configuration"
-msgstr ""
+msgstr "Yapılandırma"
 
 #: class-checklists.php:256 class-checklists.php:288 class-checklists.php:310
 #: class-checklists.php:312 class-checklists.php:344 class-checklists.php:426
 #: includes/class-checklists-detail.php:34
 msgid "Checklists"
-msgstr ""
+msgstr "Denetim Listeleri"
 
 #: class-checklists.php:572 includes/class-checklists-detail.php:30
 #: includes/class-checklists-list.php:17
 msgid "Users"
-msgstr ""
+msgstr "Kullanıcılar"
 
 #: class-checklists.php:576
 msgid "Roles"
-msgstr ""
+msgstr "Roller"
 
-#: includes/class-checklist-personal.php:206
+#: includes/class-checklist-personal.php:184
 msgid "(Processing)"
-msgstr ""
+msgstr "(İşlem yapılıyor)"
 
 #: includes/class-checklists-detail.php:19
 msgid "You don't have permission to view this checklist"
-msgstr ""
+msgstr "Bu denetim listesini görüntülemek için izniniz yok"
 
 #: includes/class-checklists-page.php:36
 msgid "Checklist not found."
-msgstr ""
+msgstr "Denetim listesi bulunamadı."
 
 #: includes/class-checklists-page.php:44
 msgid "You don't have any checklists configured."
-msgstr ""
+msgstr "Yapılandırılmış herhangi bir denetim listesi yok."
 
 #: includes/class-rest-api.php:60
 msgid "Missing Checklist ID"
-msgstr ""
+msgstr "Eksik Kontrol Listesi NO"
 
 #: includes/class-rest-api.php:66
 msgid "Missing User ID"
-msgstr ""
+msgstr "Eksik Kullanıcı NO"
 
 #: includes/class-rest-api.php:72
 msgid "Missing Form ID"
-msgstr ""
+msgstr "Eksik Form NO"
 
 #: includes/class-rest-api.php:93
 msgid "Nothing to delete"
-msgstr ""
+msgstr "Silinecek Öge Yok"
 
 #. Plugin Name of the plugin/theme
 msgid "Gravity Flow Checklists"
-msgstr ""
+msgstr "Gravity Flow Denetim Listeleri"
 
 #. Author URI of the plugin/theme
 msgid "http://gravityflow.io"
-msgstr ""
+msgstr "http://gravityflow.io"
 
 #. Description of the plugin/theme
 msgid "Checklists Extension for Gravity Flow."
-msgstr ""
+msgstr "Gravity Flow İçin Denetim Listesi Eklentisi"
 
 #. Author of the plugin/theme
 msgid "Steve Henty"
-msgstr ""
+msgstr "Steven Henty"

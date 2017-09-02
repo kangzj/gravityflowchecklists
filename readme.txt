@@ -2,7 +2,7 @@
 Contributors: stevehenty
 Tags: gravity forms, approvals, workflow
 Requires at least: 4.0
-Tested up to: 4.6.1
+Tested up to: 4.8.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -12,17 +12,15 @@ Group forms into checklists for users to complete in sequence.
 
 The Gravity Flow Checklists Extension is an extension for Gravity Flow.
 
-Gravity Flow is a commerical Add-On for [Gravity Forms](https://gravityflow.io/gravityforms)
-
-Facebook: [Steven Henty](https://www.facebook.com/gravityflow.io)
+Gravity Flow is a premium Add-On for [Gravity Forms](https://gravityflow.io/gravityforms)
 
 = Requirements =
 
 1. [Purchase and install Gravity Forms](https://gravityflow.io/gravityforms)
 1. [Purchase and install Gravity Flow](https://gravityflow.io)
 1. Wordpress 4.3+
-1. Gravity Forms 2.0+
-1. Gravity Flow 1.5+
+1. Gravity Forms 2.1+
+1. Gravity Flow 1.8+
 
 
 = Support =
@@ -43,6 +41,15 @@ The Gravity Flow Checklists Extension will work with any license of [Gravity Flo
 
 
 == ChangeLog ==
+
+= 1.0-beta-2 =
+
+- Added settings to each form in the checklist configuration to allow the checklist sequence to be blocked until the workflow is complete.
+- Added form exemptions. The admin can now mark forms as exempt by user.
+- Added settings to each form in the checklist configuration to control whether the form title is linked to the completed entry.
+- Added the gravityflowchecklists_entry_url and gravityflowchecklists_form_url filters.
+- Fixed an issue with the link to the checklist list page from the breadcrumbs where the id parameter is not removed.
+
 
 = 1.0-beta-1 =
 All new!
