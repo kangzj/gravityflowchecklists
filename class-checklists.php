@@ -604,21 +604,31 @@ if ( class_exists( 'GFForms' ) ) {
 
 			wp_enqueue_style( 'gravityflowchecklists_checklists', $this->get_base_url() . "/css/checklists{$min}.css", null, $this->_version );
 
-			// Register theme styles
-            $file = "themes/horizontal/style{$min}.css";
-			$child_theme_style    = trailingslashit( get_stylesheet_directory() ) . $file;
-			$parent_theme_style   = trailingslashit( get_template_directory()   ) . $file;
+			$path = $this->get_base_path() . '/themes';
+			$results = scandir( $path );
+			foreach ( $results as $result ) {
+				if ( '.' == $result[0] ) {
+					continue;
+				}
 
-			// Look in the child theme directory first, followed by the parent theme, followed by the Checklists core theme directory
-			if ( file_exists( $child_theme_style ) ) {
-				$url = trailingslashit( get_stylesheet_directory_uri() ) . $file;
-			} elseif ( file_exists( $parent_theme_style ) ) {
-				$url = trailingslashit( get_template_directory_uri() ) . $file;
-			} else {
-				$url = trailingslashit( $this->get_base_url() ) . $file;
+				if ( is_dir( $path . '/' . $result ) ) {
+					// Register theme styles
+					$file = "/{$result}/style{$min}.css";
+					$child_theme_style    = get_stylesheet_directory() . '/gravityflow/checklists' . $file;
+					$parent_theme_style   = get_template_directory() . '/gravityflow/checklists' . $file;
+
+					// Look in the child theme directory first, followed by the parent theme, followed by the Checklists core theme directory
+					if ( file_exists( $child_theme_style ) ) {
+						$url = get_stylesheet_directory_uri() . '/gravityflow/checklists' . $file;
+					} elseif ( file_exists( $parent_theme_style ) ) {
+						$url = get_template_directory_uri() . '/gravityflow/checklists' . $file;
+					} else {
+						$url = $this->get_base_url() . '/themes' . $file;
+					}
+					// Register style, but not enqueue yet
+					wp_register_style( 'gravityflowchecklists_checklists_' . $result, $url, null, $this->_version );
+				}
 			}
-			// Register style, but not enqueue yet
-            wp_register_style( 'gravityflowchecklists_checklists_horizontal', $url, null, $this->_version );
 		}
 
 		public static function get_entry_table_name() {
