@@ -597,6 +597,22 @@ if ( class_exists( 'GFForms' ) ) {
 			);
 
 			wp_enqueue_style( 'gravityflowchecklists_checklists', $this->get_base_url() . "/css/checklists{$min}.css", null, $this->_version );
+
+			// Register theme styles
+            $file = "themes/horizontal/style{$min}.css";
+			$child_theme_style    = trailingslashit( get_stylesheet_directory() ) . $file;
+			$parent_theme_style   = trailingslashit( get_template_directory()   ) . $file;
+
+			// Look in the child theme directory first, followed by the parent theme, followed by the Checklists core theme directory
+			if ( file_exists( $child_theme_style ) ) {
+				$url = trailingslashit( get_stylesheet_directory_uri() ) . $file;
+			} elseif ( file_exists( $parent_theme_style ) ) {
+				$url = trailingslashit( get_template_directory_uri() ) . $file;
+			} else {
+				$url = trailingslashit( $this->get_base_url() ) . $file;
+			}
+			// Register style, but not enqueue yet
+            wp_register_style( 'gravityflowchecklists_checklists_horizontal', $url, null, $this->_version );
 		}
 
 		public static function get_entry_table_name() {
