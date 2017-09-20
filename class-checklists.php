@@ -222,7 +222,7 @@ if ( class_exists( 'GFForms' ) ) {
 				),
 				array(
 					'handle'  => 'gravityflowchecklists_checklists',
-					'src'     => $this->get_base_url() . "/css/checklists{$min}.css",
+					'src'     => $this->get_base_url() . "/themes/default/style{$min}.css",
 					'version' => GFForms::$version,
 					'enqueue' => array(
 						array(
@@ -601,8 +601,6 @@ if ( class_exists( 'GFForms' ) ) {
 					),
 				)
 			);
-
-			wp_enqueue_style( 'gravityflowchecklists_checklists', $this->get_base_url() . "/css/checklists{$min}.css", null, $this->_version );
 
 			$path = $this->get_base_path() . '/themes';
 			$results = scandir( $path );
