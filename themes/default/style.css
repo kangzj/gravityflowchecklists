@@ -1,40 +1,40 @@
-.gravityflowchecklists-checklist-container{
+.gravityflowchecklists-default .gravityflowchecklists-checklist-container{
     text-align:center;
     width: 120px;
 }
-.gravityflowchecklists-checklist-wrapper li{
+.gravityflowchecklists-default .gravityflowchecklists-checklist-wrapper li{
     display: inline-block;
     padding:10px;
     vertical-align: top;
 }
-.gravityflowchecklists-checklist-wrapper ul{
+.gravityflowchecklists-default .gravityflowchecklists-checklist-wrapper ul{
     text-align:left;
     margin-left: 0;
 }
 
-.gravityflowchecklists-checklist-wrapper a{
+.gravityflowchecklists-default .gravityflowchecklists-checklist-wrapper a{
     text-decoration: none;
 }
 
-.gravityflowchecklists-disabled,
-.gravityflowchecklists-processing
+.gravityflowchecklists-default .gravityflowchecklists-disabled,
+.gravityflowchecklists-default .gravityflowchecklists-processing
 {
     color:darkgrey;
 }
-.gravityflowchecklists-checklist-detail-wrapper li {
+.gravityflowchecklists-default .gravityflowchecklists-checklist-detail-wrapper li {
     font-size:20px;
     padding:5px;
 }
 
-.gravityflowchecklists-checklist-detail-wrapper ul li {
+.gravityflowchecklists-default .gravityflowchecklists-checklist-detail-wrapper ul li {
     list-style-type: none;
 }
-.gravityflowchecklists-icon-complete,
-.gravityflowchecklists-icon-incomplete{
+.gravityflowchecklists-default .gravityflowchecklists-icon-complete,
+.gravityflowchecklists-default .gravityflowchecklists-icon-incomplete{
     color:darkgreen;
 }
 
-.gravityflowchecklists-checklist-detail-wrapper ul li a {
+.gravityflowchecklists-default .gravityflowchecklists-checklist-detail-wrapper ul li a {
     text-decoration: none;
     cursor:pointer;
 }
