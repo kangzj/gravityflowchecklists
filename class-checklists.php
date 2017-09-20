@@ -331,10 +331,11 @@ if ( class_exists( 'GFForms' ) ) {
 			$defaults = array(
 				'display_header' => true,
 				'breadcrumbs'    => true,
+                'theme'          => 'default'
 			);
 			$args     = array_merge( $defaults, $args );
 			?>
-			<div class="wrap gf_entry_wrap gravityflow_workflow_wrap gravityflow_workflow_submit">
+			<div class="wrap gf_entry_wrap gravityflow_workflow_wrap gravityflow_workflow_submit gravityflowchecklists-<?php echo $args['theme']; ?>">
 				<?php if ( $args['display_header'] ) : ?>
 					<h2 class="gf_admin_page_title">
 						<img width="45" height="22"
@@ -439,6 +440,7 @@ if ( class_exists( 'GFForms' ) ) {
 			if ( ! empty( $a['theme'] ) && wp_style_is( "gravityflowchecklists_checklists_{$a['theme']}", 'registered' ) ) {
 			    wp_enqueue_style( "gravityflowchecklists_checklists_{$a['theme']}" );
             } else {
+				$a['theme'] = 'default';
 				wp_enqueue_style( "gravityflowchecklists_checklists_default" );
             }
 
@@ -515,6 +517,10 @@ if ( class_exists( 'GFForms' ) ) {
 
 			if ( ! empty( $a['checklist'] ) ) {
 				$args['breadcrumbs'] = false;
+			}
+
+			if ( ! empty( $a['theme'] ) ) {
+				$args['theme'] = $a['theme'];
 			}
 
 			wp_enqueue_script( 'gravityflow_status_list' );
