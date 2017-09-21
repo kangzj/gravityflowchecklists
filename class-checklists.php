@@ -624,7 +624,7 @@ if ( class_exists( 'GFForms' ) ) {
 					$parent_theme_style   = get_template_directory() . '/gravityflow/checklists' . $file;
 
 					// Look in the child theme directory first, followed by the parent theme, followed by the Checklists core theme directory
-					if ( file_exists( $child_theme_style ) ) {
+					if ( is_child_theme() && file_exists( $child_theme_style ) ) {
 						$url = get_stylesheet_directory_uri() . '/gravityflow/checklists' . $file;
 					} elseif ( file_exists( $parent_theme_style ) ) {
 						$url = get_template_directory_uri() . '/gravityflow/checklists' . $file;
