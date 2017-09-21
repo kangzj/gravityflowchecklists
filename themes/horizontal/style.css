@@ -17,20 +17,24 @@
 }
 
 .gravityflowchecklists-horizontal .gravityflowchecklists-disabled,
-.gravityflowchecklists-horizontal .gravityflowchecklists-processing
-{
+.gravityflowchecklists-horizontal .gravityflowchecklists-processing,
+.gravityflowchecklists-horizontal .gravityflowchecklists-date {
+    display: block;
     color: darkgrey;
 }
 .gravityflowchecklists-horizontal .gravityflowchecklists-checklist-detail-wrapper li i {
     position: absolute;
+    display: block;
     bottom: 0;
     width: 100%;
+    font-size: 1.5em;
 }
 .gravityflowchecklists-horizontal .gravityflowchecklists-checklist-detail-wrapper li {
     display: table-cell;
     position: relative;
     font-size: 20px;
-    padding-bottom: 2em;
+    text-align: center;
+    padding-bottom: 3em;
 }
 .gravityflowchecklists-horizontal .gravityflowchecklists-checklist-detail-wrapper ul {
     display: table;

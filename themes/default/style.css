@@ -17,7 +17,8 @@
 }
 
 .gravityflowchecklists-default .gravityflowchecklists-disabled,
-.gravityflowchecklists-default .gravityflowchecklists-processing
+.gravityflowchecklists-default .gravityflowchecklists-processing,
+.gravityflowchecklists-default .gravityflowchecklists-date
 {
     color:darkgrey;
 }
