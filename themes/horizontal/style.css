@@ -1,14 +1,14 @@
 .gravityflowchecklists-horizontal .gravityflowchecklists-checklist-container{
-    text-align:center;
+    text-align: center;
     width: 120px;
 }
 .gravityflowchecklists-horizontal .gravityflowchecklists-checklist-wrapper li{
     display: inline-block;
-    padding:10px;
+    padding: 10px;
     vertical-align: top;
 }
 .gravityflowchecklists-horizontal .gravityflowchecklists-checklist-wrapper ul{
-    text-align:left;
+    text-align: left;
     margin-left: 0;
 }
 
@@ -19,7 +19,7 @@
 .gravityflowchecklists-horizontal .gravityflowchecklists-disabled,
 .gravityflowchecklists-horizontal .gravityflowchecklists-processing
 {
-    color:darkgrey;
+    color: darkgrey;
 }
 .gravityflowchecklists-horizontal .gravityflowchecklists-checklist-detail-wrapper li i {
     position: absolute;
@@ -29,7 +29,8 @@
 .gravityflowchecklists-horizontal .gravityflowchecklists-checklist-detail-wrapper li {
     display: table-cell;
     position: relative;
-    font-size:20px;
+    font-size: 20px;
+    padding-bottom: 2em;
 }
 .gravityflowchecklists-horizontal .gravityflowchecklists-checklist-detail-wrapper ul {
     display: table;
@@ -42,14 +43,14 @@
 }
 .gravityflowchecklists-horizontal .gravityflowchecklists-icon-complete,
 .gravityflowchecklists-horizontal .gravityflowchecklists-icon-incomplete{
-    color:darkgreen;
+    color: darkgreen;
 }
 
 .gravityflowchecklists-horizontal .gravityflowchecklists-checklist-detail-wrapper ul li a {
     text-decoration: none;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 img.handle{
-    cursor:hand;
+    cursor: hand;
 }
