@@ -1,52 +1,40 @@
-.gravityflowchecklists-horizontal .gravityflowchecklists-checklist-container{
+.gravityflowchecklists-horizontal .gravityflowchecklists-checklist-container {
     text-align: center;
     width: 120px;
 }
-.gravityflowchecklists-horizontal .gravityflowchecklists-checklist-wrapper li{
+
+.gravityflowchecklists-horizontal .gravityflowchecklists-checklist-wrapper li {
     display: inline-block;
     padding: 10px;
     vertical-align: top;
 }
-.gravityflowchecklists-horizontal .gravityflowchecklists-checklist-wrapper ul{
+
+.gravityflowchecklists-horizontal .gravityflowchecklists-checklist-wrapper ul {
     text-align: left;
     margin-left: 0;
 }
 
-.gravityflowchecklists-horizontal .gravityflowchecklists-checklist-wrapper a{
+.gravityflowchecklists-horizontal .gravityflowchecklists-checklist-wrapper a {
     text-decoration: none;
 }
 
 .gravityflowchecklists-horizontal .gravityflowchecklists-disabled,
 .gravityflowchecklists-horizontal .gravityflowchecklists-processing,
 .gravityflowchecklists-horizontal .gravityflowchecklists-date {
-    display: block;
     color: darkgrey;
 }
-.gravityflowchecklists-horizontal .gravityflowchecklists-checklist-detail-wrapper li i {
-    position: absolute;
-    display: block;
-    bottom: 0;
-    width: 100%;
-    font-size: 1.5em;
-}
+
 .gravityflowchecklists-horizontal .gravityflowchecklists-checklist-detail-wrapper li {
-    display: table-cell;
-    position: relative;
     font-size: 20px;
-    text-align: center;
-    padding-bottom: 3em;
-}
-.gravityflowchecklists-horizontal .gravityflowchecklists-checklist-detail-wrapper ul {
-    display: table;
-    table-layout: fixed;
-    width: 100%;
+    padding: 5px;
 }
 
 .gravityflowchecklists-horizontal .gravityflowchecklists-checklist-detail-wrapper ul li {
     list-style-type: none;
 }
+
 .gravityflowchecklists-horizontal .gravityflowchecklists-icon-complete,
-.gravityflowchecklists-horizontal .gravityflowchecklists-icon-incomplete{
+.gravityflowchecklists-horizontal .gravityflowchecklists-icon-incomplete {
     color: darkgreen;
 }
 
@@ -57,4 +45,35 @@
 
 img.handle{
     cursor: hand;
+}
+
+@media screen and ( min-width: 480px ) {
+    .gravityflowchecklists-horizontal .gravityflowchecklists-disabled,
+    .gravityflowchecklists-horizontal .gravityflowchecklists-processing,
+    .gravityflowchecklists-horizontal .gravityflowchecklists-date {
+        display: block;
+        color: darkgrey;
+    }
+
+    .gravityflowchecklists-horizontal .gravityflowchecklists-checklist-detail-wrapper li i {
+        position: absolute;
+        display: block;
+        bottom: 0;
+        width: 100%;
+        font-size: 2em;
+    }
+
+    .gravityflowchecklists-horizontal .gravityflowchecklists-checklist-detail-wrapper li {
+        display: table-cell;
+        position: relative;
+        font-size: 20px;
+        text-align: center;
+        padding-bottom: 3em;
+    }
+    
+    .gravityflowchecklists-horizontal .gravityflowchecklists-checklist-detail-wrapper ul {
+        display: table;
+        table-layout: fixed;
+        width: 100%;
+    }
 }
