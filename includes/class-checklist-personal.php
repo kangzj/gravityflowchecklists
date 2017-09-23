@@ -204,6 +204,16 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 
 				if ( $has_workflow && ! $workflow_complete ) {
 					$item .= ' ' . sprintf( '<span class="gravityflowchecklists-processing">%s</span>', esc_html__( '(Processing)', 'gravityflow' ) );
+				} else {
+					$date = $entry['date_created'];
+					if ( ! empty( $entry['workflow_timestamp'] ) ) {
+						$last_updated = date( 'Y-m-d H:i:s', $entry['workflow_timestamp'] );
+						if ( $entry['date_created'] != $last_updated ) {
+							$date = $last_updated;
+						}
+					}
+
+					$item .= ' ' . sprintf( '<span class="gravityflowchecklists-date">%s</span>', esc_html( GFCommon::format_date( $date, true, 'Y/m/d' ) ) );
 				}
 			} // End if().
 
