@@ -331,7 +331,7 @@ if ( class_exists( 'GFForms' ) ) {
 			$defaults = array(
 				'display_header' => true,
 				'breadcrumbs'    => true,
-                'theme'          => 'default'
+				'theme'          => 'default'
 			);
 			$args     = array_merge( $defaults, $args );
 			?>
@@ -339,8 +339,8 @@ if ( class_exists( 'GFForms' ) ) {
 				<?php if ( $args['display_header'] ) : ?>
 					<h2 class="gf_admin_page_title">
 						<img width="45" height="22"
-						     src="<?php echo gravity_flow()->get_base_url(); ?>/images/gravityflow-icon-blue-grad.svg"
-						     style="margin-right:5px;"/>
+							 src="<?php echo gravity_flow()->get_base_url(); ?>/images/gravityflow-icon-blue-grad.svg"
+							 style="margin-right:5px;"/>
 
 						<span><?php esc_html_e( 'Checklists', 'gravityflow' ); ?></span>
 
@@ -438,11 +438,11 @@ if ( class_exists( 'GFForms' ) ) {
 
 			// Enqueue theme stylesheet when the shortcode specifies one with "theme" attribute
 			if ( ! empty( $a['theme'] ) && wp_style_is( "gravityflowchecklists_checklists_{$a['theme']}", 'registered' ) ) {
-			    wp_enqueue_style( "gravityflowchecklists_checklists_{$a['theme']}" );
-            } else {
+				wp_enqueue_style( "gravityflowchecklists_checklists_{$a['theme']}" );
+			} else {
 				$a['theme'] = 'default';
 				wp_enqueue_style( "gravityflowchecklists_checklists_default" );
-            }
+			}
 
 			if ( rgget( 'view' ) ) {
 				wp_enqueue_script( 'gravityflow_entry_detail' );
