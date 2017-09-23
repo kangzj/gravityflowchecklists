@@ -441,7 +441,7 @@ if ( class_exists( 'GFForms' ) ) {
 				wp_enqueue_style( "gravityflowchecklists_checklists_{$a['theme']}" );
 			} else {
 				$a['theme'] = 'default';
-				wp_enqueue_style( "gravityflowchecklists_checklists_default" );
+				wp_enqueue_style( 'gravityflowchecklists_checklists_default' );
 			}
 
 			if ( rgget( 'view' ) ) {
