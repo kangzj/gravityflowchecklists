@@ -666,7 +666,14 @@ if ( class_exists( 'GFForms' ) ) {
 
 		public function save_uuid( $submission, $resume_token, $form, $entry ) {
 			if ( is_user_logged_in() ) {
-				update_user_meta( get_current_user_id(), 'gravityflowchecklists_draft_uuid', $resume_token );
+				$user_id = get_current_user_id();
+				$uuids = get_user_meta( $user_id, 'gravityflowchecklists_draft_uuids', true );
+				if ( ! $uuids ) {
+					$uuids = array();
+				}
+
+				$uuids[$form['id']] = $resume_token;
+				update_user_meta( $user_id, 'gravityflowchecklists_draft_uuids', $uuids );
 			}
 		}
 

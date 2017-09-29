@@ -144,14 +144,16 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 					$url = add_query_arg( array( 'id' => $form_id ) );
 
 					// Add resume_token if available
-					$gf_token = get_user_meta( get_current_user_id(), 'gravityflowchecklists_draft_uuid', true );
-					if ( $gf_token ) {
-						$sql = $wpdb->prepare("SELECT COUNT(*) FROM {$table} WHERE uuid = %s", $gf_token );
+					$user_id = get_current_user_id();
+					$uuids = get_user_meta( $user_id, 'gravityflowchecklists_draft_uuids', true );
+					if ( $uuids && isset( $uuids[$form_id] ) ) {
+						$sql = $wpdb->prepare("SELECT COUNT(*) FROM {$table} WHERE uuid = %s", $uuids[$form_id] );
 						$count = $wpdb->get_var( $sql );
 						if ( $count != 1 ) { // Check if token still valid
-							delete_user_meta( get_current_user_id(), 'gravityflowchecklists_draft_uuid' );
+							unset( $uuids[$form_id] );
+							update_user_meta( $user_id, 'gravityflowchecklists_draft_uuids', $uuids );
 						} else {
-							$url = add_query_arg( array( 'gf_token' => $gf_token ), $url );
+							$url = add_query_arg( array( 'gf_token' => $uuids[$form_id] ), $url );
 						}
 					}
 
