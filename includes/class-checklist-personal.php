@@ -195,7 +195,7 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 
 				// When the checklists show on the submit page, remove these extra args
 				if ( rgget( 'id' ) ) {
-					$url = remove_query_arg( array( 'id' ), $url );
+					$url = remove_query_arg( array( 'id', 'gf_token' ), $url );
 				}
 
 				/**

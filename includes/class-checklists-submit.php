@@ -11,7 +11,7 @@ class Gravity_Flow_Checklists_Submit {
 	 * @param array $args
 	 */
 	public static function render_form( $form_id, $checklist, $args ) {
-		$list_url = remove_query_arg( array( 'checklist', 'id' ) );
+		$list_url = remove_query_arg( array( 'checklist', 'id', 'gf_token' ) );
 		$checklist_url = remove_query_arg( 'id' );
 		$defaults = array(
 			'breadcrumbs' => true,
