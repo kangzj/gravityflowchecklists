@@ -111,6 +111,9 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 	}
 
 	public function render( $args = array() ) {
+		global $wpdb;
+		$table = GFFormsModel::get_incomplete_submissions_table_name();
+
 		$can_submit = true;
 
 		$items = array();
@@ -143,7 +146,13 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 					// Add resume_token if available
 					$gf_token = get_user_meta( get_current_user_id(), 'gravityflowchecklists_draft_uuid', true );
 					if ( $gf_token ) {
-						$url = add_query_arg( array( 'gf_token' => $gf_token ), $url );
+						$sql = $wpdb->prepare("SELECT COUNT(*) FROM {$table} WHERE uuid = %s", $gf_token );
+						$count = $wpdb->get_var( $sql );
+						if ( $count != 1 ) { // Check if token still valid
+							delete_user_meta( get_current_user_id(), 'gravityflowchecklists_draft_uuid' );
+						} else {
+							$url = add_query_arg( array( 'gf_token' => $gf_token ), $url );
+						}
 					}
 
 					// When the checklists show on the view page, remove these extra args
