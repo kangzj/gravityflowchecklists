@@ -193,6 +193,11 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 					'view' => 'entry',
 				) );
 
+				// When the checklists show on the submit page, remove these extra args
+				if ( rgget( 'id' ) ) {
+					$url = remove_query_arg( array( 'id' ), $url );
+				}
+
 				/**
 				 * Allows the URL to the entry to be modified.
 				 *

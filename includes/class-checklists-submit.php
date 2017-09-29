@@ -19,7 +19,7 @@ class Gravity_Flow_Checklists_Submit {
 
 		$args = array_merge( $defaults, $args );
 
-		if ( $args['breadcrumbs'] ) {
+		if ( $args['breadcrumbs'] && ! $args['single_page'] ) {
 			?>
 			<h2>
 				<i class="fa fa-check-square-o"></i>

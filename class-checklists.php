@@ -332,7 +332,8 @@ if ( class_exists( 'GFForms' ) ) {
 			$defaults = array(
 				'display_header' => true,
 				'breadcrumbs'    => true,
-				'theme'          => 'default'
+				'theme'          => 'default',
+				'single_page'    => false
 			);
 			$args     = array_merge( $defaults, $args );
 			?>
@@ -451,7 +452,7 @@ if ( class_exists( 'GFForms' ) ) {
 
 				if ( $a['single_page'] ) {
 					$html .= $this->get_shortcode_checklists_page( $a );
-                }
+				}
 
 				$html .= $this->get_shortcode_checklists_page_entry_detail( $a );
 			} else {
@@ -528,6 +529,10 @@ if ( class_exists( 'GFForms' ) ) {
 
 			if ( ! empty( $a['theme'] ) ) {
 				$args['theme'] = $a['theme'];
+			}
+
+			if ( ! empty( $a['single_page'] ) ) {
+				$args['single_page'] = $a['single_page'];
 			}
 
 			wp_enqueue_script( 'gravityflow_status_list' );
