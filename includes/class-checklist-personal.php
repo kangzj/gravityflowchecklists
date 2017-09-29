@@ -140,6 +140,12 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 				if ( $can_submit && ! $exempt ) {
 					$url = add_query_arg( array( 'id' => $form_id ) );
 
+					// Add resume_token if available
+					$gf_token = get_user_meta( get_current_user_id(), 'gravityflowchecklists_draft_uuid', true );
+					if ( $gf_token ) {
+						$url = add_query_arg( array( 'gf_token' => $gf_token ), $url );
+					}
+
 					/**
 					 * Allows the URL to the form to be modified.
 					 *

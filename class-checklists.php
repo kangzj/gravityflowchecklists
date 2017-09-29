@@ -62,6 +62,7 @@ if ( class_exists( 'GFForms' ) ) {
 			parent::init();
 
 			add_action( 'gravityflow_enqueue_frontend_scripts', array( $this, 'action_gravityflow_enqueue_frontend_scripts' ) );
+			add_action( 'gform_incomplete_submission_post_save', array( $this, 'save_uuid' ), 10, 4 );
 		}
 
 		public function init_frontend() {
@@ -650,6 +651,12 @@ if ( class_exists( 'GFForms' ) ) {
 			}
 
 			return $db_version;
+		}
+
+		public function save_uuid( $submission, $resume_token, $form, $entry ) {
+			if ( is_user_logged_in() ) {
+				update_user_meta( get_current_user_id(), 'gravityflowchecklists_draft_uuid', $resume_token );
+			}
 		}
 
 	}
