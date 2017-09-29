@@ -436,6 +436,7 @@ if ( class_exists( 'GFForms' ) ) {
 
 			$a['checklist'] = isset( $atts['checklist'] ) ? $atts['checklist'] : '';
 			$a['theme'] = isset( $atts['theme'] ) ? $atts['theme'] : '';
+			$a['single_page'] = isset( $atts['single_page'] ) ? $atts['single_page'] : false;
 
 			// Enqueue theme stylesheet when the shortcode specifies one with "theme" attribute
 			if ( ! empty( $a['theme'] ) && wp_style_is( "gravityflowchecklists_checklists_{$a['theme']}", 'registered' ) ) {
@@ -447,6 +448,11 @@ if ( class_exists( 'GFForms' ) ) {
 
 			if ( rgget( 'view' ) ) {
 				wp_enqueue_script( 'gravityflow_entry_detail' );
+
+				if ( $a['single_page'] ) {
+					$html .= $this->get_shortcode_checklists_page( $a );
+                }
+
 				$html .= $this->get_shortcode_checklists_page_entry_detail( $a );
 			} else {
 				$html .= $this->get_shortcode_checklists_page( $a );

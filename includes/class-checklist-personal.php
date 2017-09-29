@@ -146,6 +146,11 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 						$url = add_query_arg( array( 'gf_token' => $gf_token ), $url );
 					}
 
+					// When the checklists show on the view page, remove these extra args
+					if ( rgget( 'view' ) ) {
+						$url = remove_query_arg( array( 'lid', 'view', 'page' ), $url );
+					}
+
 					/**
 					 * Allows the URL to the form to be modified.
 					 *
