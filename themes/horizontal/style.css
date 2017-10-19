@@ -76,4 +76,8 @@ img.handle{
         table-layout: fixed;
         width: 100%;
     }
+
+    .gravityflowchecklists-horizontal .gform_wrapper {
+        margin-top: 3em;
+    }
 }

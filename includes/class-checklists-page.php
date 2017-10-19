@@ -29,6 +29,11 @@ class Gravity_Flow_Checklists_Page {
 					require_once( gravity_flow_checklists()->get_base_path() . '/includes/class-checklists-detail.php' );
 					Gravity_Flow_Checklists_Detail::display( $checklist, $args );
 				} else {
+					if ( $args['single_page'] ) {
+						require_once( gravity_flow_checklists()->get_base_path() . '/includes/class-checklists-detail.php' );
+						Gravity_Flow_Checklists_Detail::display( $checklist, $args );
+					}
+
 					require_once( gravity_flow_checklists()->get_base_path() . '/includes/class-checklists-submit.php' );
 					Gravity_Flow_Checklists_Submit::render_form( $form_id, $checklist, $args );
 				}

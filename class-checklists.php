@@ -62,6 +62,7 @@ if ( class_exists( 'GFForms' ) ) {
 			parent::init();
 
 			add_action( 'gravityflow_enqueue_frontend_scripts', array( $this, 'action_gravityflow_enqueue_frontend_scripts' ) );
+			add_action( 'gform_incomplete_submission_post_save', array( $this, 'save_uuid' ), 10, 4 );
 		}
 
 		public function init_frontend() {
@@ -331,7 +332,8 @@ if ( class_exists( 'GFForms' ) ) {
 			$defaults = array(
 				'display_header' => true,
 				'breadcrumbs'    => true,
-				'theme'          => 'default'
+				'theme'          => 'default',
+				'single_page'    => false
 			);
 			$args     = array_merge( $defaults, $args );
 			?>
@@ -435,17 +437,23 @@ if ( class_exists( 'GFForms' ) ) {
 
 			$a['checklist'] = isset( $atts['checklist'] ) ? $atts['checklist'] : '';
 			$a['theme'] = isset( $atts['theme'] ) ? $atts['theme'] : '';
+			$a['single_page'] = isset( $atts['single_page'] ) ? $atts['single_page'] : false;
 
 			// Enqueue theme stylesheet when the shortcode specifies one with "theme" attribute
 			if ( ! empty( $a['theme'] ) && wp_style_is( "gravityflowchecklists_checklists_{$a['theme']}", 'registered' ) ) {
 				wp_enqueue_style( "gravityflowchecklists_checklists_{$a['theme']}" );
 			} else {
 				$a['theme'] = 'default';
-				wp_enqueue_style( "gravityflowchecklists_checklists_default" );
+				wp_enqueue_style( 'gravityflowchecklists_checklists_default' );
 			}
 
 			if ( rgget( 'view' ) ) {
 				wp_enqueue_script( 'gravityflow_entry_detail' );
+
+				if ( $a['single_page'] ) {
+					$html .= $this->get_shortcode_checklists_page( $a );
+				}
+
 				$html .= $this->get_shortcode_checklists_page_entry_detail( $a );
 			} else {
 				$html .= $this->get_shortcode_checklists_page( $a );
@@ -521,6 +529,10 @@ if ( class_exists( 'GFForms' ) ) {
 
 			if ( ! empty( $a['theme'] ) ) {
 				$args['theme'] = $a['theme'];
+			}
+
+			if ( ! empty( $a['single_page'] ) ) {
+				$args['single_page'] = $a['single_page'];
 			}
 
 			wp_enqueue_script( 'gravityflow_status_list' );
@@ -650,6 +662,19 @@ if ( class_exists( 'GFForms' ) ) {
 			}
 
 			return $db_version;
+		}
+
+		public function save_uuid( $submission, $resume_token, $form, $entry ) {
+			if ( is_user_logged_in() ) {
+				$user_id = get_current_user_id();
+				$uuids = get_user_meta( $user_id, 'gravityflowchecklists_draft_uuids', true );
+				if ( ! $uuids ) {
+					$uuids = array();
+				}
+
+				$uuids[$form['id']] = $resume_token;
+				update_user_meta( $user_id, 'gravityflowchecklists_draft_uuids', $uuids );
+			}
 		}
 
 	}

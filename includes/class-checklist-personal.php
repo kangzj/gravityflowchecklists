@@ -111,6 +111,9 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 	}
 
 	public function render( $args = array() ) {
+		global $wpdb;
+		$table = GFFormsModel::get_incomplete_submissions_table_name();
+
 		$can_submit = true;
 
 		$items = array();
@@ -139,6 +142,25 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 
 				if ( $can_submit && ! $exempt ) {
 					$url = add_query_arg( array( 'id' => $form_id ) );
+
+					// Add resume_token if available
+					$user_id = get_current_user_id();
+					$uuids = get_user_meta( $user_id, 'gravityflowchecklists_draft_uuids', true );
+					if ( $uuids && isset( $uuids[$form_id] ) ) {
+						$sql = $wpdb->prepare("SELECT COUNT(*) FROM {$table} WHERE uuid = %s", $uuids[$form_id] );
+						$count = $wpdb->get_var( $sql );
+						if ( $count != 1 ) { // Check if token still valid
+							unset( $uuids[$form_id] );
+							update_user_meta( $user_id, 'gravityflowchecklists_draft_uuids', $uuids );
+						} else {
+							$url = add_query_arg( array( 'gf_token' => $uuids[$form_id] ), $url );
+						}
+					}
+
+					// When the checklists show on the view page, remove these extra args
+					if ( rgget( 'view' ) ) {
+						$url = remove_query_arg( array( 'lid', 'view', 'page' ), $url );
+					}
 
 					/**
 					 * Allows the URL to the form to be modified.
@@ -181,6 +203,11 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 					'page' => 'gravityflow-inbox',
 					'view' => 'entry',
 				) );
+
+				// When the checklists show on the submit page, remove these extra args
+				if ( rgget( 'id' ) ) {
+					$url = remove_query_arg( array( 'id', 'gf_token' ), $url );
+				}
 
 				/**
 				 * Allows the URL to the entry to be modified.
