@@ -271,7 +271,7 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 			}
 		}
 
-		if ( rgar( $node, 'waitForWorkflowComplete' ) ) {
+		if ( ! empty( $entries) && rgar( $node, 'waitForWorkflowComplete' ) ) {
 			$last_entry = $entries[0];
 			if ( isset( $last_entry['workflow_final_status'] ) && $last_entry['workflow_final_status'] != 'pending' ) {
 				$is_complete = false;
