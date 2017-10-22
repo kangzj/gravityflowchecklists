@@ -42,6 +42,13 @@ The Gravity Flow Checklists Extension will work with any license of [Gravity Flo
 
 == ChangeLog ==
 
+= 1.0-beta-3 =
+
+- Added support for themes.
+- Added the theme shortcode attribute.
+- Added the single_page shortcode attribute.
+- Added support for the save and continue feature. The checklist form link will open the saved form.
+
 = 1.0-beta-2 =
 
 - Added settings to each form in the checklist configuration to allow the checklist sequence to be blocked until the workflow is complete.
