@@ -658,12 +658,14 @@ if ( class_exists( 'GFForms' ) ) {
 				}
 
 				if ( is_dir( $theme_path . '/' . $result ) ) {
-					// Register theme styles
 					$file = "/{$result}/style{$min}.css";
-					$url    = get_stylesheet_directory_uri() . '/gravityflow/checklists' . $file;
+					$theme_style = $theme_path . $file;
 
-					// Register style, but not enqueue yet
-					wp_register_style( 'gravityflowchecklists_checklists_' . $result, $url, null, $this->_version );
+					if ( file_exists( $theme_style ) ) {
+						$url = get_stylesheet_directory_uri() . '/gravityflow/checklists' . $file;
+						// Register style, but not enqueue yet
+						wp_register_style( 'gravityflowchecklists_checklists_' . $result, $url, null, $this->_version );
+					}
 				}
 			}
 		}
