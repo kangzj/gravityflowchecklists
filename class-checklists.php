@@ -622,6 +622,7 @@ if ( class_exists( 'GFForms' ) ) {
 				)
 			);
 
+			// Themes come with Gravity Checklists can be overridden
 			$path = $this->get_base_path() . '/themes';
 			$results = scandir( $path );
 			foreach ( $results as $result ) {
@@ -643,6 +644,24 @@ if ( class_exists( 'GFForms' ) ) {
 					} else {
 						$url = $this->get_base_url() . '/themes' . $file;
 					}
+					// Register style, but not enqueue yet
+					wp_register_style( 'gravityflowchecklists_checklists_' . $result, $url, null, $this->_version );
+				}
+			}
+
+			// Scan gravityflow/checklists folder in the current theme to see if there are custom theme
+			$theme_path = get_stylesheet_directory() . '/gravityflow/checklists';
+			$theme_results = scandir( $theme_path );
+			foreach ( $theme_results as $result ) {
+				if ( '.' == $result[0] || in_array( $result, $results ) ) { // skip if it's an overridden stylesheet
+					continue;
+				}
+
+				if ( is_dir( $theme_path . '/' . $result ) ) {
+					// Register theme styles
+					$file = "/{$result}/style{$min}.css";
+					$url    = get_stylesheet_directory_uri() . '/gravityflow/checklists' . $file;
+
 					// Register style, but not enqueue yet
 					wp_register_style( 'gravityflowchecklists_checklists_' . $result, $url, null, $this->_version );
 				}
