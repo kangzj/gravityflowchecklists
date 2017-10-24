@@ -61,7 +61,10 @@ if ( class_exists( 'GFForms' ) ) {
 		public function init() {
 			parent::init();
 
-			add_action( 'gravityflow_enqueue_frontend_scripts', array( $this, 'action_gravityflow_enqueue_frontend_scripts' ) );
+			add_action( 'gravityflow_enqueue_frontend_scripts', array(
+				$this,
+				'action_gravityflow_enqueue_frontend_scripts'
+			) );
 			add_action( 'gform_incomplete_submission_post_save', array( $this, 'save_uuid' ), 10, 4 );
 		}
 
@@ -82,14 +85,14 @@ if ( class_exists( 'GFForms' ) ) {
 		}
 
 		public function upgrade( $previous_version ) {
-			if ( version_compare( $previous_version,'1.0-beta-2', '<' ) ) {
+			if ( version_compare( $previous_version, '1.0-beta-2', '<' ) ) {
 				$this->upgrade_10beta2();
 			}
 		}
 
 		public function upgrade_10beta2() {
-			$settings_dirty = false;
-			$app_settings = $this->get_app_settings();
+			$settings_dirty    = false;
+			$app_settings      = $this->get_app_settings();
 			$checklist_configs = $this->get_checklist_configs();
 			foreach ( $checklist_configs as &$checklist_config ) {
 				$nodes = rgar( $checklist_config, 'nodes' );
@@ -101,7 +104,7 @@ if ( class_exists( 'GFForms' ) ) {
 						$node['waitForWorkflowComplete'] = false;
 					}
 					$checklist_config['nodes'] = $nodes;
-					$settings_dirty = true;
+					$settings_dirty            = true;
 				}
 			}
 
@@ -120,19 +123,24 @@ if ( class_exists( 'GFForms' ) ) {
 			if ( $this->is_settings_page() ) {
 				$forms = GFFormsModel::get_forms();
 
-				$form_choices = array( array( 'value' => '', 'label' => __( 'Select a form', 'gravityflowchecklists' ) ) );
+				$form_choices = array(
+					array(
+						'value' => '',
+						'label' => __( 'Select a form', 'gravityflowchecklists' )
+					)
+				);
 				foreach ( $forms as $form ) {
-					$steps = gravity_flow()->get_steps( $form->id );
-					$has_workflow = ! empty( $steps );
+					$steps          = gravity_flow()->get_steps( $form->id );
+					$has_workflow   = ! empty( $steps );
 					$form_choices[] = array(
-						'value' => $form->id,
-						'label' => $form->title,
+						'value'       => $form->id,
+						'label'       => $form->title,
 						'hasWorkflow' => $has_workflow,
 					);
 				}
 
 				$user_choices = $this->get_users_as_choices();
-				$scripts[] = array(
+				$scripts[]    = array(
 					'handle'  => 'gravityflowchecklists_settings_js',
 					'src'     => $this->get_base_url() . "/js/checklist-settings-build{$min}.js",
 					'version' => $this->_version,
@@ -247,7 +255,7 @@ if ( class_exists( 'GFForms' ) ) {
 		}
 
 		public function app_settings_fields() {
-			$settings   = parent::app_settings_fields();
+			$settings = parent::app_settings_fields();
 
 			$settings[] = array(
 				'title'  => esc_html__( 'Configuration', 'gravityflowchecklists' ),
@@ -264,7 +272,7 @@ if ( class_exists( 'GFForms' ) ) {
 		}
 
 		public function get_checklist_configs() {
-			$settings        = $this->get_app_settings();
+			$settings           = $this->get_app_settings();
 			$checklist_settings = isset( $settings['checklists'] ) ? $settings['checklists'] : array();
 
 			return $checklist_settings;
@@ -435,8 +443,8 @@ if ( class_exists( 'GFForms' ) ) {
 
 			$a = gravity_flow()->get_shortcode_atts( $atts );
 
-			$a['checklist'] = isset( $atts['checklist'] ) ? $atts['checklist'] : '';
-			$a['theme'] = isset( $atts['theme'] ) ? $atts['theme'] : '';
+			$a['checklist']   = isset( $atts['checklist'] ) ? $atts['checklist'] : '';
+			$a['theme']       = isset( $atts['theme'] ) ? $atts['theme'] : '';
 			$a['single_page'] = isset( $atts['single_page'] ) ? $atts['single_page'] : false;
 
 			// Enqueue theme stylesheet when the shortcode specifies one with "theme" attribute
@@ -484,7 +492,7 @@ if ( class_exists( 'GFForms' ) ) {
 			$detail_base_url = add_query_arg( array( 'page' => 'gravityflow-inbox', 'view' => 'entry' ) );
 
 			$args = array(
-				'base_url' => remove_query_arg( array(
+				'base_url'           => remove_query_arg( array(
 					'entry-id',
 					'form-id',
 					'start-date',
@@ -565,9 +573,9 @@ if ( class_exists( 'GFForms' ) ) {
 				'check_permissions' => $check_permissions,
 				'timeline'          => $a['timeline'],
 				'sidebar'           => $a['sidebar'],
-				'last_updated'         => $a['last_updated'],
-				'step_status'          => $a['step_status'],
-				'workflow_info'        => $a['workflow_info'],
+				'last_updated'      => $a['last_updated'],
+				'step_status'       => $a['step_status'],
+				'workflow_info'     => $a['workflow_info'],
 			);
 
 			ob_start();
@@ -622,7 +630,8 @@ if ( class_exists( 'GFForms' ) ) {
 				)
 			);
 
-			$path = $this->get_base_path() . '/themes';
+			// Themes come with Gravity Checklists can be overridden
+			$path    = $this->get_base_path() . '/themes';
 			$results = scandir( $path );
 			foreach ( $results as $result ) {
 				if ( '.' == $result[0] ) {
@@ -631,9 +640,9 @@ if ( class_exists( 'GFForms' ) ) {
 
 				if ( is_dir( $path . '/' . $result ) ) {
 					// Register theme styles
-					$file = "/{$result}/style{$min}.css";
-					$child_theme_style    = get_stylesheet_directory() . '/gravityflow/checklists' . $file;
-					$parent_theme_style   = get_template_directory() . '/gravityflow/checklists' . $file;
+					$file               = "/{$result}/style{$min}.css";
+					$child_theme_style  = get_stylesheet_directory() . '/gravityflow/checklists' . $file;
+					$parent_theme_style = get_template_directory() . '/gravityflow/checklists' . $file;
 
 					// Look in the child theme directory first, followed by the parent theme, followed by the Checklists core theme directory
 					if ( is_child_theme() && file_exists( $child_theme_style ) ) {
@@ -645,6 +654,49 @@ if ( class_exists( 'GFForms' ) ) {
 					}
 					// Register style, but not enqueue yet
 					wp_register_style( 'gravityflowchecklists_checklists_' . $result, $url, null, $this->_version );
+				}
+			}
+
+			// Scan gravityflow/checklists folder in the current theme to see if there are custom theme
+			$current_theme_path    = get_stylesheet_directory() . '/gravityflow/checklists';
+			$current_theme_results = scandir( $current_theme_path );
+			foreach ( $current_theme_results as $result ) {
+				if ( '.' == $result[0] || in_array( $result, $results ) ) { // skip if it's an overridden stylesheet
+					continue;
+				}
+
+				if ( is_dir( $current_theme_path . '/' . $result ) ) {
+					$file        = "/{$result}/style{$min}.css";
+					$theme_style = $current_theme_path . $file;
+
+					if ( file_exists( $theme_style ) ) {
+						$url = get_stylesheet_directory_uri() . '/gravityflow/checklists' . $file;
+						// Register style, but not enqueue yet
+						wp_register_style( 'gravityflowchecklists_checklists_' . $result, $url, null, $this->_version );
+					}
+				}
+			}
+
+			// If the current theme is a child theme, get Checklists styles in the parent theme registered as well
+			if ( is_child_theme() ) {
+				$parent_theme_path    = get_template_directory() . '/gravityflow/checklists';
+				$parent_theme_results = scandir( $parent_theme_path );
+
+				foreach ( $parent_theme_results as $result ) {
+					if ( '.' == $result[0] || in_array( $result, $results ) || in_array( $result, $current_theme_results ) ) { // skip if it's an overridden stylesheet
+						continue;
+					}
+
+					if ( is_dir( $parent_theme_path . '/' . $result ) ) {
+						$file               = "/{$result}/style{$min}.css";
+						$parent_theme_style = $parent_theme_path . $file;
+
+						if ( file_exists( $parent_theme_style ) ) {
+							$url = get_template_directory_uri() . '/gravityflow/checklists' . $file;
+							// Register style, but not enqueue yet
+							wp_register_style( 'gravityflowchecklists_checklists_' . $result, $url, null, $this->_version );
+						}
+					}
 				}
 			}
 		}
@@ -667,12 +719,12 @@ if ( class_exists( 'GFForms' ) ) {
 		public function save_uuid( $submission, $resume_token, $form, $entry ) {
 			if ( is_user_logged_in() ) {
 				$user_id = get_current_user_id();
-				$uuids = get_user_meta( $user_id, 'gravityflowchecklists_draft_uuids', true );
+				$uuids   = get_user_meta( $user_id, 'gravityflowchecklists_draft_uuids', true );
 				if ( ! $uuids ) {
 					$uuids = array();
 				}
 
-				$uuids[$form['id']] = $resume_token;
+				$uuids[ $form['id'] ] = $resume_token;
 				update_user_meta( $user_id, 'gravityflowchecklists_draft_uuids', $uuids );
 			}
 		}
