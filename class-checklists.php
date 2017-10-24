@@ -650,16 +650,16 @@ if ( class_exists( 'GFForms' ) ) {
 			}
 
 			// Scan gravityflow/checklists folder in the current theme to see if there are custom theme
-			$theme_path = get_stylesheet_directory() . '/gravityflow/checklists';
-			$theme_results = scandir( $theme_path );
-			foreach ( $theme_results as $result ) {
+			$current_theme_path = get_stylesheet_directory() . '/gravityflow/checklists';
+			$current_theme_results = scandir( $current_theme_path );
+			foreach ( $current_theme_results as $result ) {
 				if ( '.' == $result[0] || in_array( $result, $results ) ) { // skip if it's an overridden stylesheet
 					continue;
 				}
 
-				if ( is_dir( $theme_path . '/' . $result ) ) {
+				if ( is_dir( $current_theme_path . '/' . $result ) ) {
 					$file = "/{$result}/style{$min}.css";
-					$theme_style = $theme_path . $file;
+					$theme_style = $current_theme_path . $file;
 
 					if ( file_exists( $theme_style ) ) {
 						$url = get_stylesheet_directory_uri() . '/gravityflow/checklists' . $file;
@@ -668,6 +668,29 @@ if ( class_exists( 'GFForms' ) ) {
 					}
 				}
 			}
+
+			// If the current theme is a child theme, get Checklists styles in the parent theme registered as well
+			if ( is_child_theme() ) {
+				$parent_theme_path = get_template_directory() . '/gravityflow/checklists';
+				$parent_theme_results = scandir( $parent_theme_path );
+
+				foreach ( $parent_theme_results as $result ) {
+					if ( '.' == $result[0] || in_array( $result, $results ) || in_array( $result, $current_theme_results ) ) { // skip if it's an overridden stylesheet
+						continue;
+					}
+
+					if ( is_dir( $parent_theme_path . '/' . $result ) ) {
+						$file = "/{$result}/style{$min}.css";
+						$parent_theme_style = $parent_theme_path . $file;
+
+						if ( file_exists( $parent_theme_style ) ) {
+							$url = get_template_directory_uri() . '/gravityflow/checklists' . $file;
+							// Register style, but not enqueue yet
+							wp_register_style( 'gravityflowchecklists_checklists_' . $result, $url, null, $this->_version );
+						}
+					}
+				}
+            }
 		}
 
 		public static function get_entry_table_name() {
