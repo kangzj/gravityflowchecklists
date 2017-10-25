@@ -657,6 +657,8 @@ if ( class_exists( 'GFForms' ) ) {
 				}
 			}
 
+			$current_theme_results = array();
+
 			// Scan gravityflow/checklists folder in the current theme to see if there are custom theme
 			$current_theme_path    = get_stylesheet_directory() . '/gravityflow/checklists';
 			if ( is_dir( $current_theme_path ) ) {
