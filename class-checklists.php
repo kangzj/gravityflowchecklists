@@ -630,7 +630,7 @@ if ( class_exists( 'GFForms' ) ) {
 				)
 			);
 
-			// Themes come with Gravity Checklists can be overridden
+			// Themes come with Gravity Flow Checklists can be overridden
 			$path    = $this->get_base_path() . '/themes';
 			$results = scandir( $path );
 			foreach ( $results as $result ) {
@@ -650,7 +650,7 @@ if ( class_exists( 'GFForms' ) ) {
 					} elseif ( file_exists( $parent_theme_style ) ) {
 						$url = get_template_directory_uri() . '/gravityflow/checklists' . $file;
 					} else {
-						$url = $this->get_base_url() . '/themes' . $file;
+						$url = $this->get_base_url() . "/themes/{$result}/style{$min}.css";
 					}
 					// Register style, but not enqueue yet
 					wp_register_style( 'gravityflowchecklists_checklists_' . $result, $url, null, $this->_version );
