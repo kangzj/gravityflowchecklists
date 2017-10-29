@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gravityflowchecklists\n"
 "Report-Msgid-Bugs-To: https://www.gravityflow.io\n"
-"POT-Creation-Date: 2017-09-02 09:45:42+00:00\n"
+"POT-Creation-Date: 2017-10-22 13:56:56+00:00\n"
 "PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Tor-Bjorn Fjellner <tobi@fjellner.com>, 2017\n"
 "Language-Team: Swedish (Sweden) (https://www.transifex.com/gravityflow/teams/50678/sv_SE/)\n"
@@ -25,98 +25,98 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Textdomain-Support: yes\n"
 
-#: class-checklists.php:122
+#: class-checklists.php:123
 msgid "Select a form"
 msgstr "Välj ett formulär"
 
-#: class-checklists.php:147
+#: class-checklists.php:148
 msgid "Name"
 msgstr "Namn"
 
-#: class-checklists.php:148
+#: class-checklists.php:149
 msgid "Custom Label"
 msgstr "Anpassad etikett"
 
-#: class-checklists.php:149
+#: class-checklists.php:150
 msgid "Forms"
 msgstr "Formulär"
 
-#: class-checklists.php:150
+#: class-checklists.php:151
 msgid "Form"
 msgstr "Formulär"
 
-#: class-checklists.php:151
+#: class-checklists.php:152
 msgid "Personal"
 msgstr "Privat"
 
-#: class-checklists.php:152
+#: class-checklists.php:153
 msgid "Shared"
 msgstr "Delat"
 
-#: class-checklists.php:153
+#: class-checklists.php:154
 msgid "Sequential"
 msgstr "Sekventiell"
 
-#: class-checklists.php:154
+#: class-checklists.php:155
 msgid "Options"
 msgstr "Alternativ"
 
-#: class-checklists.php:155
+#: class-checklists.php:156
 msgid "Block sequence until Workflow is complete"
 msgstr "Blockera sekvensen tills arbetsflödet har fullföljts"
 
-#: class-checklists.php:156
+#: class-checklists.php:157
 msgid "You don't have any checklists."
 msgstr "Du har inga checklistor."
 
-#: class-checklists.php:157
+#: class-checklists.php:158
 msgid "Let's add one"
 msgstr "Låt oss lägga till en"
 
-#: class-checklists.php:158
+#: class-checklists.php:159
 msgid "This item will be deleted. Are you sure?"
 msgstr "Denna punkt kommer att raderas. Är du säker?"
 
-#: class-checklists.php:159
+#: class-checklists.php:160
 msgid "New Checklist"
 msgstr "Ny checklista"
 
-#: class-checklists.php:160
+#: class-checklists.php:161
 msgid "All Users"
 msgstr "Alla användare"
 
-#: class-checklists.php:161
+#: class-checklists.php:162
 msgid "Select Users"
 msgstr "Välj användare"
 
-#: class-checklists.php:162
+#: class-checklists.php:163
 msgid "New Checklist Item"
 msgstr "Ny punkt i checklista"
 
-#: class-checklists.php:163
+#: class-checklists.php:164
 msgid "Link to entry"
 msgstr "Länk till posten"
 
-#: class-checklists.php:252
+#: class-checklists.php:253
 msgid "Configuration"
 msgstr "Konfiguration"
 
-#: class-checklists.php:256 class-checklists.php:288 class-checklists.php:310
-#: class-checklists.php:312 class-checklists.php:344 class-checklists.php:426
+#: class-checklists.php:257 class-checklists.php:289 class-checklists.php:311
+#: class-checklists.php:313 class-checklists.php:347 class-checklists.php:429
 #: includes/class-checklists-detail.php:34
 msgid "Checklists"
 msgstr "Checklistor"
 
-#: class-checklists.php:572 includes/class-checklists-detail.php:30
+#: class-checklists.php:598 includes/class-checklists-detail.php:30
 #: includes/class-checklists-list.php:17
 msgid "Users"
 msgstr "Användare"
 
-#: class-checklists.php:576
+#: class-checklists.php:602
 msgid "Roles"
 msgstr "Roller"
 
-#: includes/class-checklist-personal.php:206
+#: includes/class-checklist-personal.php:233
 msgid "(Processing)"
 msgstr "(Bearbetning pågår)"
 
@@ -124,11 +124,11 @@ msgstr "(Bearbetning pågår)"
 msgid "You don't have permission to view this checklist"
 msgstr "Du saknar behörighet att se denna checklista"
 
-#: includes/class-checklists-page.php:36
+#: includes/class-checklists-page.php:41
 msgid "Checklist not found."
 msgstr "Checklistan hittades inte."
 
-#: includes/class-checklists-page.php:44
+#: includes/class-checklists-page.php:49
 msgid "You don't have any checklists configured."
 msgstr "Du har inga checklistor konfigurerade."
 
@@ -153,13 +153,13 @@ msgid "Gravity Flow Checklists"
 msgstr "Gravity Flow Checklists"
 
 #. Author URI of the plugin/theme
-msgid "http://gravityflow.io"
-msgstr "http://gravityflow.io"
+msgid "https://gravityflow.io"
+msgstr "https://gravityflow.io"
 
 #. Description of the plugin/theme
 msgid "Checklists Extension for Gravity Flow."
 msgstr "Tillägg för checklistor i Gravity Flow."
 
 #. Author of the plugin/theme
-msgid "Steve Henty"
-msgstr "Steve Henty"
+msgid "Gravity Flow"
+msgstr "Gravity Flow"

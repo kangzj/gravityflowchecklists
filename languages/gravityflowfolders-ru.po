@@ -1,20 +1,19 @@
 # Copyright 2015-2017 Steven Henty.
 # Translators:
 # FX Bénard <fxb@wp-translations.org>, 2017
-# Ecron <ecron_89@hotmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: gravityflowchecklists\n"
 "Report-Msgid-Bugs-To: https://www.gravityflow.io\n"
 "POT-Creation-Date: 2017-10-22 13:56:56+00:00\n"
 "PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Ecron <ecron_89@hotmail.com>, 2017\n"
-"Language-Team: Catalan (https://www.transifex.com/gravityflow/teams/50678/ca/)\n"
+"Last-Translator: FX Bénard <fxb@wp-translations.org>, 2017\n"
+"Language-Team: Russian (https://www.transifex.com/gravityflow/teams/50678/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ca\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 "X-Generator: Gravity Flow Build Script\n"
 "X-Poedit-Basepath: ../\n"
 "X-Poedit-Bookmarks: \n"
@@ -26,130 +25,130 @@ msgstr ""
 
 #: class-checklists.php:123
 msgid "Select a form"
-msgstr "Seleccioneu un formulari"
+msgstr ""
 
 #: class-checklists.php:148
 msgid "Name"
-msgstr "Nom"
+msgstr ""
 
 #: class-checklists.php:149
 msgid "Custom Label"
-msgstr "Etiqueta personalitzada"
+msgstr ""
 
 #: class-checklists.php:150
 msgid "Forms"
-msgstr "Formularis"
+msgstr ""
 
 #: class-checklists.php:151
 msgid "Form"
-msgstr "Formulari"
+msgstr ""
 
 #: class-checklists.php:152
 msgid "Personal"
-msgstr "Personals"
+msgstr ""
 
 #: class-checklists.php:153
 msgid "Shared"
-msgstr "Compartits"
+msgstr ""
 
 #: class-checklists.php:154
 msgid "Sequential"
-msgstr "Seqüencials"
+msgstr ""
 
 #: class-checklists.php:155
 msgid "Options"
-msgstr "Opcions"
+msgstr ""
 
 #: class-checklists.php:156
 msgid "Block sequence until Workflow is complete"
-msgstr "Bloca la seqüència fins que el flux de treball es completi"
+msgstr ""
 
 #: class-checklists.php:157
 msgid "You don't have any checklists."
-msgstr "No teniu cap llista de comprovació."
+msgstr ""
 
 #: class-checklists.php:158
 msgid "Let's add one"
-msgstr "Afegim-ne una"
+msgstr ""
 
 #: class-checklists.php:159
 msgid "This item will be deleted. Are you sure?"
-msgstr "Aquest element s'eliminarà. N'esteu segur?"
+msgstr ""
 
 #: class-checklists.php:160
 msgid "New Checklist"
-msgstr "Llista de comprovació nova"
+msgstr ""
 
 #: class-checklists.php:161
 msgid "All Users"
-msgstr "Tots els usuaris"
+msgstr ""
 
 #: class-checklists.php:162
 msgid "Select Users"
-msgstr "Seleccioneu usuaris"
+msgstr ""
 
 #: class-checklists.php:163
 msgid "New Checklist Item"
-msgstr "Element de la llista nou"
+msgstr ""
 
 #: class-checklists.php:164
 msgid "Link to entry"
-msgstr "Enllaç a l'entrada"
+msgstr ""
 
 #: class-checklists.php:253
 msgid "Configuration"
-msgstr "Configuració"
+msgstr ""
 
 #: class-checklists.php:257 class-checklists.php:289 class-checklists.php:311
 #: class-checklists.php:313 class-checklists.php:347 class-checklists.php:429
 #: includes/class-checklists-detail.php:34
 msgid "Checklists"
-msgstr "Llistes de comprovació"
+msgstr ""
 
 #: class-checklists.php:598 includes/class-checklists-detail.php:30
 #: includes/class-checklists-list.php:17
 msgid "Users"
-msgstr "Usuaris"
+msgstr ""
 
 #: class-checklists.php:602
 msgid "Roles"
-msgstr "Rols"
+msgstr ""
 
 #: includes/class-checklist-personal.php:233
 msgid "(Processing)"
-msgstr "(S'està processant)"
+msgstr ""
 
 #: includes/class-checklists-detail.php:19
 msgid "You don't have permission to view this checklist"
-msgstr "No teniu permís per a veure aquesta llista de comprovació"
+msgstr ""
 
 #: includes/class-checklists-page.php:41
 msgid "Checklist not found."
-msgstr "No s'ha trobat la llista de comprovació."
+msgstr ""
 
 #: includes/class-checklists-page.php:49
 msgid "You don't have any checklists configured."
-msgstr "No heu configurat cap llista de comprovació."
+msgstr ""
 
 #: includes/class-rest-api.php:60
 msgid "Missing Checklist ID"
-msgstr "ID de la llista de comprovació que hi falta."
+msgstr ""
 
 #: includes/class-rest-api.php:66
 msgid "Missing User ID"
-msgstr "ID de l'usuari que hi falta"
+msgstr ""
 
 #: includes/class-rest-api.php:72
 msgid "Missing Form ID"
-msgstr "ID del formulari que hi falta"
+msgstr ""
 
 #: includes/class-rest-api.php:93
 msgid "Nothing to delete"
-msgstr "Res a eliminar"
+msgstr ""
 
 #. Plugin Name of the plugin/theme
 msgid "Gravity Flow Checklists"
-msgstr "Llistes de comprovació del Gravity Flow"
+msgstr ""
 
 #. Author URI of the plugin/theme
 msgid "https://gravityflow.io"
@@ -157,7 +156,7 @@ msgstr "https://gravityflow.io"
 
 #. Description of the plugin/theme
 msgid "Checklists Extension for Gravity Flow."
-msgstr "Extensió Llistes de comprovació per al Gravity Flow."
+msgstr ""
 
 #. Author of the plugin/theme
 msgid "Gravity Flow"

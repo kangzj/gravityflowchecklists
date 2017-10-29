@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gravityflowchecklists\n"
 "Report-Msgid-Bugs-To: https://www.gravityflow.io\n"
-"POT-Creation-Date: 2017-09-02 09:45:42+00:00\n"
+"POT-Creation-Date: 2017-10-22 13:56:56+00:00\n"
 "PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FX Bénard <fxb@wp-translations.org>, 2017\n"
 "Language-Team: Spanish (Spain) (https://www.transifex.com/gravityflow/teams/50678/es_ES/)\n"
@@ -24,98 +24,98 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Textdomain-Support: yes\n"
 
-#: class-checklists.php:122
+#: class-checklists.php:123
 msgid "Select a form"
 msgstr "Selecciona un formulario"
 
-#: class-checklists.php:147
+#: class-checklists.php:148
 msgid "Name"
 msgstr "Nombre"
 
-#: class-checklists.php:148
+#: class-checklists.php:149
 msgid "Custom Label"
 msgstr "Etiqueta personalizada"
 
-#: class-checklists.php:149
+#: class-checklists.php:150
 msgid "Forms"
 msgstr "Formularios"
 
-#: class-checklists.php:150
+#: class-checklists.php:151
 msgid "Form"
 msgstr "Formulario"
 
-#: class-checklists.php:151
+#: class-checklists.php:152
 msgid "Personal"
 msgstr "Personal"
 
-#: class-checklists.php:152
+#: class-checklists.php:153
 msgid "Shared"
 msgstr "Compartido"
 
-#: class-checklists.php:153
+#: class-checklists.php:154
 msgid "Sequential"
 msgstr "Secuencial"
 
-#: class-checklists.php:154
+#: class-checklists.php:155
 msgid "Options"
 msgstr "Opciones"
 
-#: class-checklists.php:155
+#: class-checklists.php:156
 msgid "Block sequence until Workflow is complete"
 msgstr "Bloquear la secuencia hasta que el flujo de trabajo se complete"
 
-#: class-checklists.php:156
+#: class-checklists.php:157
 msgid "You don't have any checklists."
 msgstr "No tienes ninguna lista de verificación"
 
-#: class-checklists.php:157
+#: class-checklists.php:158
 msgid "Let's add one"
 msgstr "Añadamos una"
 
-#: class-checklists.php:158
+#: class-checklists.php:159
 msgid "This item will be deleted. Are you sure?"
 msgstr "Este elemento será borrado. ¿Estás seguro?"
 
-#: class-checklists.php:159
+#: class-checklists.php:160
 msgid "New Checklist"
 msgstr "Nueva lista de verificación"
 
-#: class-checklists.php:160
+#: class-checklists.php:161
 msgid "All Users"
 msgstr "Todos los usuarios"
 
-#: class-checklists.php:161
+#: class-checklists.php:162
 msgid "Select Users"
 msgstr "Selecciona los usuarios"
 
-#: class-checklists.php:162
+#: class-checklists.php:163
 msgid "New Checklist Item"
 msgstr "Nuevo elemento de lista de verificación"
 
-#: class-checklists.php:163
+#: class-checklists.php:164
 msgid "Link to entry"
 msgstr "Enlace a esta entrada"
 
-#: class-checklists.php:252
+#: class-checklists.php:253
 msgid "Configuration"
 msgstr "Configuración"
 
-#: class-checklists.php:256 class-checklists.php:288 class-checklists.php:310
-#: class-checklists.php:312 class-checklists.php:344 class-checklists.php:426
+#: class-checklists.php:257 class-checklists.php:289 class-checklists.php:311
+#: class-checklists.php:313 class-checklists.php:347 class-checklists.php:429
 #: includes/class-checklists-detail.php:34
 msgid "Checklists"
 msgstr "Listas de verificación"
 
-#: class-checklists.php:572 includes/class-checklists-detail.php:30
+#: class-checklists.php:598 includes/class-checklists-detail.php:30
 #: includes/class-checklists-list.php:17
 msgid "Users"
 msgstr "Usuarios"
 
-#: class-checklists.php:576
+#: class-checklists.php:602
 msgid "Roles"
 msgstr "Roles"
 
-#: includes/class-checklist-personal.php:206
+#: includes/class-checklist-personal.php:233
 msgid "(Processing)"
 msgstr "(Procesando)"
 
@@ -123,11 +123,11 @@ msgstr "(Procesando)"
 msgid "You don't have permission to view this checklist"
 msgstr "No tienes permisos para ver esta lista de verificación"
 
-#: includes/class-checklists-page.php:36
+#: includes/class-checklists-page.php:41
 msgid "Checklist not found."
 msgstr "Lista de verificación no encontrada."
 
-#: includes/class-checklists-page.php:44
+#: includes/class-checklists-page.php:49
 msgid "You don't have any checklists configured."
 msgstr "No tienes listas de verificación configuradas."
 
@@ -152,13 +152,13 @@ msgid "Gravity Flow Checklists"
 msgstr "Gravity Flow Checklists"
 
 #. Author URI of the plugin/theme
-msgid "http://gravityflow.io"
-msgstr "http://gravityflow.io"
+msgid "https://gravityflow.io"
+msgstr "https://gravityflow.io"
 
 #. Description of the plugin/theme
 msgid "Checklists Extension for Gravity Flow."
 msgstr "Extensión de listas de verificación para Gravity Flow."
 
 #. Author of the plugin/theme
-msgid "Steve Henty"
-msgstr "Steve Henty"
+msgid "Gravity Flow"
+msgstr "Gravity Flow"
