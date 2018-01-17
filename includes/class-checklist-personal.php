@@ -42,6 +42,7 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 		}
 
 		$search_criteria = array(
+			'status'        => 'active',
 			'field_filters' => array(
 				array(
 					'key'      => 'created_by',
