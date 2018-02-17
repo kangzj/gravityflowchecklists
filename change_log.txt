@@ -1,1 +1,1 @@
-
+- Ensure only active entries are included in the checklist
