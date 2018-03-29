@@ -14,6 +14,11 @@
     margin-left: 0;
 }
 
+.rtl .gravityflowchecklists-checklist-wrapper ul {
+    text-align: right;
+    margin-right: 0;
+}
+
 .gravityflowchecklists-checklist-wrapper a {
     text-decoration: none;
 }
@@ -76,6 +81,10 @@ img.handle{
         table-layout: fixed;
         width: 100%;
         margin-left: 0;
+    }
+
+    .rtl .gravityflowchecklists-horizontal .gravityflowchecklists-checklist-detail-wrapper ul {
+        margin-right: 0;
     }
 
     .gravityflowchecklists-horizontal .gform_wrapper {

@@ -1,1 +1,2 @@
+- Added CSS RTL improvements.
 - Ensure only active entries are included in the checklist

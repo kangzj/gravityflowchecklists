@@ -19,12 +19,21 @@
     float: left;
 }
 
+.rtl .gravityflow-handle,
+.rtl .gravityflow-item-container,
+.rtl .gravityflow-buttons-container{
+    float: right;
+}
+
 .gravityflow-handle{
     width: 25px;
     cursor:move;
 }
 .gravityflow-buttons-container{
     margin-left: 5px;
+}
+.rtl .gravityflow-buttons-container{
+    margin-right: 5px;
 }
 .gravityflow-checklist-settings-container{
     width: 400px;
@@ -39,6 +48,9 @@
 .gravityflow-radio-horizontal{
     display:inline-block;
     margin-right: 5px;
+}
+.rtl .gravityflow-radio-horizontal{
+    margin-left: 5px;
 }
 
 .gravityflow-toggle-icon {
