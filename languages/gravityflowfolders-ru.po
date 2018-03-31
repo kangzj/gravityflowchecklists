@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gravityflowchecklists\n"
 "Report-Msgid-Bugs-To: https://www.gravityflow.io\n"
-"POT-Creation-Date: 2017-10-22 13:56:56+00:00\n"
+"POT-Creation-Date: 2017-10-29 15:36:42+00:00\n"
 "PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FX Bénard <fxb@wp-translations.org>, 2017\n"
 "Language-Team: Russian (https://www.transifex.com/gravityflow/teams/50678/ru/)\n"
@@ -23,94 +23,94 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Textdomain-Support: yes\n"
 
-#: class-checklists.php:123
+#: class-checklists.php:129
 msgid "Select a form"
 msgstr ""
 
-#: class-checklists.php:148
+#: class-checklists.php:156
 msgid "Name"
 msgstr ""
 
-#: class-checklists.php:149
+#: class-checklists.php:157
 msgid "Custom Label"
 msgstr ""
 
-#: class-checklists.php:150
+#: class-checklists.php:158
 msgid "Forms"
 msgstr ""
 
-#: class-checklists.php:151
+#: class-checklists.php:159
 msgid "Form"
 msgstr ""
 
-#: class-checklists.php:152
+#: class-checklists.php:160
 msgid "Personal"
 msgstr ""
 
-#: class-checklists.php:153
+#: class-checklists.php:161
 msgid "Shared"
 msgstr ""
 
-#: class-checklists.php:154
+#: class-checklists.php:162
 msgid "Sequential"
 msgstr ""
 
-#: class-checklists.php:155
+#: class-checklists.php:163
 msgid "Options"
 msgstr ""
 
-#: class-checklists.php:156
+#: class-checklists.php:164
 msgid "Block sequence until Workflow is complete"
 msgstr ""
 
-#: class-checklists.php:157
+#: class-checklists.php:165
 msgid "You don't have any checklists."
 msgstr ""
 
-#: class-checklists.php:158
+#: class-checklists.php:166
 msgid "Let's add one"
 msgstr ""
 
-#: class-checklists.php:159
+#: class-checklists.php:167
 msgid "This item will be deleted. Are you sure?"
 msgstr ""
 
-#: class-checklists.php:160
+#: class-checklists.php:168
 msgid "New Checklist"
 msgstr ""
 
-#: class-checklists.php:161
+#: class-checklists.php:169
 msgid "All Users"
 msgstr ""
 
-#: class-checklists.php:162
+#: class-checklists.php:170
 msgid "Select Users"
 msgstr ""
 
-#: class-checklists.php:163
+#: class-checklists.php:171
 msgid "New Checklist Item"
 msgstr ""
 
-#: class-checklists.php:164
+#: class-checklists.php:172
 msgid "Link to entry"
 msgstr ""
 
-#: class-checklists.php:253
+#: class-checklists.php:261
 msgid "Configuration"
 msgstr ""
 
-#: class-checklists.php:257 class-checklists.php:289 class-checklists.php:311
-#: class-checklists.php:313 class-checklists.php:347 class-checklists.php:429
+#: class-checklists.php:265 class-checklists.php:297 class-checklists.php:319
+#: class-checklists.php:321 class-checklists.php:355 class-checklists.php:437
 #: includes/class-checklists-detail.php:34
 msgid "Checklists"
 msgstr ""
 
-#: class-checklists.php:598 includes/class-checklists-detail.php:30
+#: class-checklists.php:606 includes/class-checklists-detail.php:30
 #: includes/class-checklists-list.php:17
 msgid "Users"
 msgstr ""
 
-#: class-checklists.php:602
+#: class-checklists.php:610
 msgid "Roles"
 msgstr ""
 
