@@ -3,8 +3,8 @@ Contributors: stevehenty
 Tags: gravity forms, approvals, workflow
 Requires at least: 4.0
 Tested up to: 4.9.4
-License: GPLv3 or later
-License URI: http://www.gnu.org/licenses/gpl-3.0.html
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Group forms into checklists for users to complete in sequence.
 
