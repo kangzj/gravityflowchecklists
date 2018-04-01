@@ -380,7 +380,15 @@ if ( class_exists( 'GFForms' ) ) {
 
 			$checklist_configs = $this->get_checklist_configs();
 
-			$checklist_configs = apply_filters( 'gravityflowchecklists_checklists', $checklist_configs );
+			/**
+			 * Allows the checklists to be modified.
+			 *
+			 * @since 1.0
+			 *
+			 * @param array        $checklist_configs The array of ckecklist configs.
+			 * @param WP_User|null $user              The user.
+			 */
+			$checklist_configs = apply_filters( 'gravityflowchecklists_checklists', $checklist_configs, $user );
 
 			$checklists = array();
 
