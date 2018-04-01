@@ -1,2 +1,1 @@
-- Added CSS RTL improvements.
-- Ensure only active entries are included in the checklist
+- Added the $user parameter to the gravityflowchecklists_checklists filter
