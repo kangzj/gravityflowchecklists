@@ -31,7 +31,20 @@ class Gravity_Flow_Checklists_Submit {
 			</h2>
 			<?php
 		}
+
 		gravity_form_enqueue_scripts( $form_id );
+
+		/**
+		 * Fires before a checklist form is rendered.
+		 *
+		 * @since 1.0.1
+		 *
+		 * @param Gravity_Flow_Checklist $checklist The checklist to be rendered.
+		 * @param int                    $form_id   The ID of the form
+		 * @param array                  $args      The display args.
+		 */
+		do_action( 'gravityflowchecklists_form_pre_render', $checklist, $form_id, $args );
+
 		gravity_form( $form_id );
 	}
 }

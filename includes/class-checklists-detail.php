@@ -43,7 +43,15 @@ class Gravity_Flow_Checklists_Detail {
 			<?php } ?>
 		<div class="gravityflowchecklists-checklist-detail-wrapper <?php echo $checklist->get_type(); ?>">
 			<?php
-
+			/**
+			 * Fires before a checklist is rendered.
+			 *
+			 * @since 1.0.1
+			 *
+			 * @param Gravity_Flow_Checklist $checklist The checklist to be rendered.
+			 * @param array                  $args      The args for display
+			 */
+			do_action( 'gravityflowchecklists_checklist_pre_render', $checklist, $args );
 			$checklist->render( $args );
 			?>
 		</div>

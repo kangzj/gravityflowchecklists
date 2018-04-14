@@ -24,6 +24,17 @@ class Gravity_Flow_Checklists_List {
 		?>
 
 		<div class="gravityflowchecklists-checklist-wrapper">
+			<?php
+			/**
+			 * Fires before a checklist is rendered.
+			 *
+			 * @since 1.0.1
+			 *
+			 * @param Gravity_Flow_Checklist[] $checklists The checklist to be rendered.
+			 * @param WP_User                  $args       The args for display
+			 */
+			do_action( 'gravityflowchecklists_list_pre_render', $checklists, $user );
+			?>
 			<ul>
 				<?php
 				foreach ( $checklists as $checklist ) {
