@@ -42,7 +42,8 @@ class Gravity_Flow_Checklists_Bootstrap {
 
 		require_once( 'class-checklists.php' );
 
-		gravity_flow_checklists();
+		// Registers the class name with GFAddOn.
+		GFAddOn::register( 'Gravity_Flow_Checklists' );
 	}
 }
 
