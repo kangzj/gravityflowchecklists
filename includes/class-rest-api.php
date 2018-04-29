@@ -6,7 +6,7 @@
  *
  * @since 1.0-beta-2
  *
- * @copyright   Copyright (c) 2015-2017, Steven Henty S.L.
+ * @copyright   Copyright (c) 2015-2018, Steven Henty S.L.
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  *
  * Class Gravity_Flow_REST_API
