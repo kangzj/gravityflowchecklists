@@ -27,6 +27,7 @@
 .gravityflowchecklists-processing,
 .gravityflowchecklists-date {
     color: darkgrey;
+    font-size: 14px;
 }
 
 .gravityflowchecklists-checklist-detail-wrapper li {

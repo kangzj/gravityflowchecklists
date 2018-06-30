@@ -1,1 +1,2 @@
 - Added the $user parameter to the gravityflowchecklists_checklists filter
+- Updated the font size of the meta information for submitted forms.
