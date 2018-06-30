@@ -6,7 +6,11 @@
 	$(document).ready(function () {
 		$('.gravityflowchecklists-icon').click( function() {
 			var $this = $(this),
-				method, checklistId, userId, formId, exempt;
+				method, checklistId, userId, formId, exempt, canExempt;
+			canExempt = $this.data('can_exempt');
+			if ( ! canExempt ){
+				return;
+			}
 			exempt = $this.data('exempt');
 			method = exempt ? 'DELETE' : 'POST';
 			checklistId = $this.data('checklist');

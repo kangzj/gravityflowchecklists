@@ -135,11 +135,13 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 
 				// No entries yet so the form may be ready to submit
 
+				$can_exempt = GFAPI::current_user_can_any( 'gravityflowchecklists_user_admin' );
+
 				$exempt = $this->is_exempt( $form_id );
 
 				$icon_classes = $exempt ? 'gravityflowchecklists-icon-complete fa-check-square-o' : 'gravityflowchecklists-icon-incomplete fa-square-o';
 
-				$icon = sprintf( '<i class="gravityflowchecklists-icon %s fa fa-fw" data-checklist="%s" data-user_id="%d" data-form_id="%d" data-exempt="%d"></i>', $icon_classes, $this->get_id(), $this->user->ID, $form_id, $exempt );
+				$icon = sprintf( '<i class="gravityflowchecklists-icon %s fa fa-fw" data-checklist="%s" data-user_id="%d" data-form_id="%d" data-exempt="%d" data-can_exempt="%d"></i>', $icon_classes, $this->get_id(), $this->user->ID, $form_id, $exempt, $can_exempt );
 
 				if ( $can_submit && ! $exempt ) {
 					$url = add_query_arg( array( 'id' => $form_id ) );
