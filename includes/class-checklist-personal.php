@@ -267,6 +267,9 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 		$node = array();
 		foreach ( $this->nodes as $node ) {
 			$form_id = $node['form_id'];
+			if ( $this->is_exempt( $form_id ) ) {
+				continue;
+			}
 			$entries = $this->get_entries_for_form( $form_id );
 			if ( empty( $entries ) ) {
 				$is_complete = false;
@@ -274,9 +277,9 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 			}
 		}
 
-		if ( ! empty( $entries) && rgar( $node, 'waitForWorkflowComplete' ) ) {
+		if ( ! empty( $entries ) && rgar( $node, 'waitForWorkflowComplete' ) ) {
 			$last_entry = $entries[0];
-			if ( isset( $last_entry['workflow_final_status'] ) && $last_entry['workflow_final_status'] != 'pending' ) {
+			if ( isset( $last_entry['workflow_final_status'] ) && $last_entry['workflow_final_status'] == 'pending' ) {
 				$is_complete = false;
 			}
 		}

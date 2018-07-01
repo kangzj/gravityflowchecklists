@@ -89,6 +89,18 @@ class Gravity_Flow_Checklists_REST_API {
 				$exemption = $exemptions[ $form_id ];
 				unset( $exemptions[ $form_id ] );
 				update_user_meta( $user_id, 'gravityflowchecklists_exemptions', $exemptions, $original_exemptions );
+
+				/**
+				 * Fires after an exemption has been removed.
+				 *
+				 * @since 1.1
+				 *
+				 * @param int $user_id The user for which the exemption removed.
+				 * @param int $form_id The ID of the form for which the exemption was removed.
+				 * @param string $checklist_id The ID of the checklist for which the exemption was removed.
+				 * @param array $exemption The details of the exemption including the user ID of the user who added the exemption and the timestamp.
+				 */
+				do_action( 'gravityflowchecklists_post_remove_exemption', $user_id, $form_id, $checklist_id, $exemption );
 			} else {
 				return new WP_Error( 'nothing_to_delete',  __( 'Nothing to delete', 'gravityflowchecklists' ) );
 			}
@@ -100,6 +112,18 @@ class Gravity_Flow_Checklists_REST_API {
 			);
 			$exemptions[ $form_id ] = $exemption;
 			update_user_meta( $user_id, 'gravityflowchecklists_exemptions', $exemptions, $original_exemptions );
+
+			/**
+			 * Fires after an exemption has been added.
+			 *
+			 * @since 1.1
+			 *
+			 * @param int $user_id The user for which the exemption added.
+			 * @param int $form_id The ID of the form for which the exemption was added.
+			 * @param string $checklist_id The ID of the checklist for which the exemption was added.
+			 * @param array $exemption The details of the exemption including the user ID of the user who added the exemption and the timestamp.
+			 */
+			do_action( 'gravityflowchecklists_post_add_exemption', $user_id, $form_id, $checklist_id, $exemption );
 		}
 
 		$response = rest_ensure_response( $exemption );

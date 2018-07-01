@@ -79,6 +79,17 @@ abstract class Gravity_Flow_Checklist {
 		return $this->type;
 	}
 
+	/**
+	 * Returns the configuration of the checklist.
+	 *
+	 * @since 1.1
+	 *
+	 * @return array
+	 */
+	public function get_config() {
+		return $this->config;
+	}
+
 	public function add_entry( $entry_id ) {
 		$key = $this->get_meta_key();
 		gform_update_meta( $entry_id, $key, time() );
