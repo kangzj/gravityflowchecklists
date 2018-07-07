@@ -20,8 +20,14 @@ class Gravity_Flow_Checklists_Detail {
 			return;
 		}
 
-		$list_url = remove_query_arg( array( 'checklist', 'id', 'gf_token', 'lid', 'view', 'page' ) );
 		if ( $args['breadcrumbs'] ) {
+
+			$query_args = array( 'checklist', 'id', 'gf_token', 'lid', 'view' );
+			if ( ! is_admin() ) {
+				$query_args[] = 'page';
+			}
+			$list_url = remove_query_arg( $query_args );
+
 		?>
 		<h2>
 			<?php
