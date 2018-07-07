@@ -1,15 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import update from 'immutability-helper';
 import shortid from 'shortid';
 
-import Repeater from './components/repeater/repeater';
-import RepeaterItem from './components/repeater/item';
-import RadioGroupField from './components/repeater/radio-group';
-import CheckboxField from './components/repeater/checkbox';
-import SelectField from './components/repeater/select';
-import TextField from './components/repeater/text';
-import TextAreaField from './components/repeater/textarea';
+import { Repeater, NestedRepeater, RepeaterItem, RadioGroupField, CheckboxField, SelectField, TextField, TextAreaField } from 'gf-repeater';
+
 
 class FormNodes extends RepeaterItem {
 
@@ -58,8 +52,7 @@ class FormNodes extends RepeaterItem {
 		if (this.state.isOpen) {
 			options = (
 				<div>
-					{strings.form}
-					<SelectField settingName="form_id" value={this.props.item.form_id} choices={this.props.forms} />
+					<SelectField label={strings.form} settingName="form_id" value={this.props.item.form_id} choices={this.props.forms} />
 					<CheckboxField settingName="linkToEntry"
 								   checked={this.props.item.linkToEntry}
 								   label={strings.linkToEntry}/>
@@ -93,9 +86,8 @@ class ChecklistSettings extends RepeaterItem {
 
 		checklistSettings = (<div>
 			<CheckboxField settingName="sequential" checked={this.props.item.sequential} label={strings.sequential}/>
-			<Repeater
+			<NestedRepeater
 				label={strings.forms}
-				stateful={false}
 				settingName="nodes"
 				value={this.props.item.nodes}
 				strings={strings}
@@ -112,7 +104,7 @@ class ChecklistSettings extends RepeaterItem {
 									}
 			>
 				<FormNodes strings={strings} forms={strings.vars.forms} checklistIsSequential={this.props.item.sequential}/>
-			</Repeater>
+			</NestedRepeater>
 		</div>)
 
 		const permissionsRadioChoices = [
@@ -139,8 +131,7 @@ class ChecklistSettings extends RepeaterItem {
 			settings = (<div className="gravityflow-checklist-settings">
 				<TextField settingName="name" value={this.props.item.name} label={strings.checklistName} />
 				{checklistSettings}<br />
-				Permissions<br />
-				<RadioGroupField settingName="permissions" value={this.props.item.permissions} choices={permissionsRadioChoices} horizontal={true} />
+				<RadioGroupField label={strings.permissions} settingName="permissions" value={this.props.item.permissions} choices={permissionsRadioChoices} horizontal={true} />
 				{selectUsers}
 			</div>);
 		}
@@ -189,5 +180,3 @@ jQuery(document).ready(function () {
 		document.getElementById('gravityflowchecklists-checklists-settings-ui')
 	);
 });
-
-

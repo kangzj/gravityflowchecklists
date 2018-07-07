@@ -170,6 +170,7 @@ if ( class_exists( 'GFForms' ) ) {
 						'selectUsers'             => __( 'Select Users', 'gravityflowchecklists' ),
 						'newChecklistItem'        => __( 'New Checklist Item', 'gravityflow' ),
 						'linkToEntry'             => __( 'Link to entry', 'gravityflow' ),
+						'permissions'             => __( 'Permissions', 'gravityflow' ),
 					),
 				);
 			}
