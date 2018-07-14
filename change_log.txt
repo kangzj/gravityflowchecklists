@@ -1,7 +1,0 @@
-- Added the gravityflowchecklists_post_add_exemption and gravityflowchecklists_post_remove_exemption actions.
-- Added the $user parameter to the gravityflowchecklists_checklists filter
-- Fixed an issue where the spinner appears when attempting to exempt a form without permissions.
-- Updated the font size of the meta information for submitted forms.
-- Updated the checklist to display as complete only when the workflow of the final form is complete.
-- Fixed an issue where the checklist does not display as complete if one of the forms is marked as exempt.
-- Fixed the breadcrumb link on the admin checklist detail page redirecting to a blank /wp-admin/admin.php page.
