@@ -1,5 +1,5 @@
 .gravityflow-checklist-settings-container{
-    width: 450px;
+    min-width: 450px;
     border: 1px solid #dedede;
 }
 
@@ -36,7 +36,7 @@
 }
 
 .gravityflow-node-container{
-    width:310px;
+    min-width:310px;
     border: 1px solid #dedede;
     padding: 5px;
 }
