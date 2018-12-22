@@ -177,11 +177,35 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 					 */
 					$url = apply_filters( 'gravityflowchecklists_form_url', $url, $form, $entries, $exempt );
 
-					$form_title = $icon . ' ' . sprintf( '<a href="%s">%s</a>',  esc_url( $url ), esc_html( $form['title'] ) );
+					/**
+					 * Allows the title to the form to be modified.
+					 *
+					 * @since 1.2-dev
+					 *
+					 * @param string  $title   The title of the form.
+					 * @param array   $forms   The Form array.
+					 * @param array   $entries The entries submitted by the current user for this form.
+					 * @param bool    $exempt  Whether the user is exempt from submitting this form.
+					 */
+					$form_title = apply_filters( 'gravityflowchecklists_form_title', $form['title'], $form, $entries, $exempt );
+
+					$form_title = $icon . ' ' . sprintf( '<a href="%s">%s</a>',  esc_url( $url ), esc_html( $form_title ) );
 
 					$item = $form_title;
 				} else {
-					$item = $icon . ' ' . sprintf( '<span class="gravityflowchecklists-disabled">%s</span>', esc_html( $form['title'] ) );
+					/**
+					 * Allows the title to the form to be modified.
+					 *
+					 * @since 1.2-dev
+					 *
+					 * @param string  $title   The title of the form.
+					 * @param array   $forms   The Form array.
+					 * @param array   $entries The entries submitted by the current user for this form.
+					 * @param bool    $exempt  Whether the user is exempt from submitting this form.
+					 */
+					$form_title = apply_filters( 'gravityflowchecklists_form_title', $form['title'], $form, $entries, $exempt );
+
+					$item = $icon . ' ' . sprintf( '<span class="gravityflowchecklists-disabled">%s</span>', esc_html( $form_title ) );
 				}
 			} else {
 
