@@ -26,6 +26,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 define( 'GRAVITY_FLOW_CHECKLISTS_VERSION', '1.1.1-dev' );
+define( 'GRAVITY_FLOW_CHECKLISTS_EDD_ITEM_ID', '9778' );
 define( 'GRAVITY_FLOW_CHECKLISTS_EDD_ITEM_NAME', 'Checklists' );
 
 add_action( 'gravityflow_loaded', array( 'Gravity_Flow_Checklists_Bootstrap', 'load' ), 1 );
@@ -44,6 +45,10 @@ class Gravity_Flow_Checklists_Bootstrap {
 
 		// Registers the class name with GFAddOn.
 		GFAddOn::register( 'Gravity_Flow_Checklists' );
+
+		if ( defined( 'GRAVITY_FLOW_CHECKLISTS_LICENSE_KEY' ) ) {
+			gravity_flow_checklists()->license_key = GRAVITY_FLOW_CHECKLISTS_LICENSE_KEY;
+		}
 	}
 }
 

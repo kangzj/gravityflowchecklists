@@ -23,7 +23,10 @@
     text-decoration: none;
 }
 
-.gravityflowchecklists-disabled,
+.gravityflowchecklists-disabled{
+    color: darkgrey;
+}
+
 .gravityflowchecklists-processing,
 .gravityflowchecklists-date {
     color: darkgrey;

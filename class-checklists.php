@@ -21,6 +21,26 @@ if ( class_exists( 'GFForms' ) ) {
 
 		public $edd_item_name = GRAVITY_FLOW_CHECKLISTS_EDD_ITEM_NAME;
 
+		/**
+		 * The item name used by Easy Digital Downloads.
+		 *
+		 * @since 1.1.1
+		 *
+		 * @var string
+		 */
+		public $edd_item_id = GRAVITY_FLOW_CHECKLISTS_EDD_ITEM_ID;
+
+		/**
+		 * Holds the license key for the current installation.
+		 *
+		 * Set with a constant e.g. GRAVITY_FLOW_EXTENSION_LICENSE_KEY in the extension bootstrap file.
+		 *
+		 * @since 1.1.1
+		 *
+		 * @var string
+		 */
+		public $license_key = '';
+
 		// The Framework will display an appropriate message on the plugins page if necessary
 		protected $_min_gravityforms_version = '1.9.10';
 
