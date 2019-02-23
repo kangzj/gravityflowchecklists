@@ -1,1 +1,2 @@
+- Added support for the license key constant
 - Added the filter gravityflowchecklists_form_title to allow the display of form titles in checklist to be modified
