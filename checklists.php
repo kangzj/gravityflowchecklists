@@ -69,15 +69,19 @@ function gravityflow_checklists_edd_plugin_updater() {
 
 	$gravity_flow_checklists = gravity_flow_checklists();
 	if ( $gravity_flow_checklists ) {
-		$settings = $gravity_flow_checklists->get_app_settings();
 
-		$license_key = trim( rgar( $settings, 'license_key' ) );
+		if ( defined( 'GRAVITY_FLOW_CHECKLISTS_LICENSE_KEY' ) ) {
+			$license_key = GRAVITY_FLOW_CHECKLISTS_LICENSE_KEY;
+		} else {
+			$settings = $gravity_flow_checklists->get_app_settings();
+			$license_key = trim( rgar( $settings, 'license_key' ) );
+		}
 
 		$edd_updater = new Gravity_Flow_EDD_SL_Plugin_Updater( GRAVITY_FLOW_EDD_STORE_URL, __FILE__, array(
 			'version'   => GRAVITY_FLOW_CHECKLISTS_VERSION,
 			'license'   => $license_key,
-			'item_name' => GRAVITY_FLOW_CHECKLISTS_EDD_ITEM_NAME,
-			'author'    => 'Steven Henty',
+			'item_id' => GRAVITY_FLOW_CHECKLISTS_EDD_ITEM_ID,
+			'author'    => 'Gravity Flow',
 		) );
 	}
 
