@@ -42,6 +42,11 @@ The Gravity Flow Checklists Extension will work with any license of [Gravity Flo
 
 == ChangeLog ==
 
+= 1.2 =
+- Added support for the license key constant GRAVITY_FLOW_CHECKLISTS_LICENSE_KEY
+- Added the filter gravityflowchecklists_form_title to allow the display of form titles in checklist to be modified.
+- Fixed some styles.
+
 = 1.1 =
 - Added the gravityflowchecklists_post_add_exemption and gravityflowchecklists_post_remove_exemption actions.
 - Added the $user parameter to the gravityflowchecklists_checklists filter
