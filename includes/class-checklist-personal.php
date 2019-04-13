@@ -49,6 +49,11 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 					'value'    => $this->user->ID,
 					'operator' => '=',
 				),
+				array(
+					'key'      => 'partial_entry_id',
+					'operator' => 'is',
+					'value'    => ''
+				)
 			),
 		);
 
