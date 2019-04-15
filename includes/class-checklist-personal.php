@@ -118,7 +118,7 @@ class Gravity_Flow_Checklist_Personal extends Gravity_Flow_Checklist {
 
 	public function render( $args = array() ) {
 		global $wpdb;
-		$table = GFFormsModel::get_incomplete_submissions_table_name();
+		$table = version_compare( GFFormsModel::get_database_version(), '2.3-dev-1', '<' ) ? GFFormsModel::get_incomplete_submissions_table_name() : GFFormsModel::get_draft_submissions_table_name();
 
 		$can_submit = true;
 
