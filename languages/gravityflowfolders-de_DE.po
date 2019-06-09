@@ -1,15 +1,15 @@
-# Copyright 2015-2018 Steven Henty.
+# Copyright 2015-2019 Steven Henty.
 # Translators:
 # Christian Herrmann, 2017
-# FX Bénard <fxb@wp-translations.org>, 2017
+# FX Bénard <fxb@wp-translations.org>, 2019
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: gravityflowchecklists\n"
 "Report-Msgid-Bugs-To: https://www.gravityflow.io\n"
-"POT-Creation-Date: 2018-07-14 08:39:34+00:00\n"
+"POT-Creation-Date: 2019-03-02 17:13:52+00:00\n"
 "PO-Revision-Date: 2016-12-18 21:47+0000\n"
-"Last-Translator: FX Bénard <fxb@wp-translations.org>, 2017\n"
+"Last-Translator: FX Bénard <fxb@wp-translations.org>, 2019\n"
 "Language-Team: German (Germany) (https://www.transifex.com/gravityflow/teams/50678/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,102 +25,102 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Textdomain-Support: yes\n"
 
-#: class-checklists.php:129
+#: class-checklists.php:149
 msgid "Select a form"
 msgstr "Formular auswählen"
 
-#: class-checklists.php:156
+#: class-checklists.php:176
 msgid "Name"
 msgstr "Name"
 
-#: class-checklists.php:157
+#: class-checklists.php:177
 msgid "Custom Label"
 msgstr "Individuelle Beschriftung"
 
-#: class-checklists.php:158
+#: class-checklists.php:178
 msgid "Forms"
 msgstr "Formulare"
 
-#: class-checklists.php:159
+#: class-checklists.php:179
 msgid "Form"
 msgstr "Formular"
 
-#: class-checklists.php:160
+#: class-checklists.php:180
 msgid "Personal"
 msgstr "Persönlich"
 
-#: class-checklists.php:161
+#: class-checklists.php:181
 msgid "Shared"
 msgstr "Geteilt"
 
-#: class-checklists.php:162
+#: class-checklists.php:182
 msgid "Sequential"
 msgstr "Sequentiell"
 
-#: class-checklists.php:163
+#: class-checklists.php:183
 msgid "Options"
 msgstr "Optionen"
 
-#: class-checklists.php:164
+#: class-checklists.php:184
 msgid "Block sequence until Workflow is complete"
 msgstr "Abfolge anhalten bis Workflow abgeschlossen ist"
 
-#: class-checklists.php:165
+#: class-checklists.php:185
 msgid "You don't have any checklists."
 msgstr "Du hast keine Checklisten."
 
-#: class-checklists.php:166
+#: class-checklists.php:186
 msgid "Let's add one"
 msgstr "Füge eine hinzu"
 
-#: class-checklists.php:167
+#: class-checklists.php:187
 msgid "This item will be deleted. Are you sure?"
 msgstr "Dieser Eintrag wird gelöscht werden. Bist du sicher?"
 
-#: class-checklists.php:168
+#: class-checklists.php:188
 msgid "New Checklist"
 msgstr "Neue Checkliste"
 
-#: class-checklists.php:169
+#: class-checklists.php:189
 msgid "All Users"
 msgstr "Alle Benutzer"
 
-#: class-checklists.php:170
+#: class-checklists.php:190
 msgid "Select Users"
 msgstr "Benutzer auswählen"
 
-#: class-checklists.php:171
+#: class-checklists.php:191
 msgid "New Checklist Item"
 msgstr "Neuer Checklisten-Eintrag"
 
-#: class-checklists.php:172
+#: class-checklists.php:192
 msgid "Link to entry"
 msgstr "Link zum Eintrag"
 
-#: class-checklists.php:173
+#: class-checklists.php:193
 msgid "Permissions"
-msgstr ""
+msgstr "Berechtigungen"
 
-#: class-checklists.php:262
+#: class-checklists.php:282
 msgid "Configuration"
 msgstr "Konfiguration"
 
-#: class-checklists.php:266 class-checklists.php:298 class-checklists.php:320
-#: class-checklists.php:322 class-checklists.php:356 class-checklists.php:446
+#: class-checklists.php:286 class-checklists.php:318 class-checklists.php:340
+#: class-checklists.php:342 class-checklists.php:376 class-checklists.php:466
 #: includes/class-checklists-detail.php:40
 msgid "Checklists"
 msgstr "Checklisten"
 
-#: class-checklists.php:615 includes/class-checklists-detail.php:36
+#: class-checklists.php:635 includes/class-checklists-detail.php:36
 #: includes/class-checklists-list.php:17
 msgid "Users"
 msgstr "Benutzer"
 
-#: class-checklists.php:619
+#: class-checklists.php:639
 msgid "Roles"
 msgstr "Rollen"
 
-#: includes/class-checklist-personal.php:236
+#: includes/class-checklist-personal.php:246
 msgid "(Processing)"
 msgstr "(In Bearbeitung)"
 

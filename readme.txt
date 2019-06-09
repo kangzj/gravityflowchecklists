@@ -2,7 +2,7 @@
 Contributors: stevehenty
 Tags: gravity forms, approvals, workflow
 Requires at least: 4.0
-Tested up to: 4.9.4
+Tested up to: 5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -41,6 +41,11 @@ The Gravity Flow Checklists Extension will work with any license of [Gravity Flo
 
 
 == ChangeLog ==
+
+= 1.3 =
+- Added translations for French, Portuguese, Italian, Swedish, Dutch, Turkish, German and Spanish.
+- Fixed the form being marked as complete when a partial entry is saved.
+- Fixed the incomplete submissions don't work properly with Gravity Forms 2.4.+.
 
 = 1.2 =
 - Added support for the license key constant GRAVITY_FLOW_CHECKLISTS_LICENSE_KEY

@@ -1,2 +1,0 @@
-- Fixed the form being marked as complete when a partial entry is saved.
-- Fixed the incomplete submissions didn't work properly with Gravity Forms 2.4.+.

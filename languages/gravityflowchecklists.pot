@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gravityflowchecklists\n"
 "Report-Msgid-Bugs-To: https://www.gravityflow.io\n"
-"POT-Creation-Date: 2019-03-02 17:13:52+00:00\n"
+"POT-Creation-Date: 2019-06-09 14:35:08+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -118,7 +118,7 @@ msgstr ""
 msgid "Roles"
 msgstr ""
 
-#: includes/class-checklist-personal.php:246
+#: includes/class-checklist-personal.php:251
 msgid "(Processing)"
 msgstr ""
 
